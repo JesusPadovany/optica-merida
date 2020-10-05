@@ -1,0 +1,127 @@
+ <div class="breadcumb_area bg-img" style="background-image: url(assets/dist/img/bg-img/breadcumb.jpg);">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="page-title text-center">
+                    <h2>{{title}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Articulos -->
+<section class="shop_grid_area section-padding-80">
+    <div class="container">
+        <div class="row">
+
+            <!-- Barra lateral con opciones -->
+            <div class="col-12 col-md-4 col-lg-3">
+                <div class="shop_sidebar_area">
+
+                    <!-- Filtrar por categorias -->
+                    <div class="widget catagory mb-50">                        
+                        <h6 class="widget-title mb-30">Catagorías</h6>
+                        <div class="catagories-menu">
+                            <ul id="menu-content2" class="menu-content collapse show">
+                                <li data-toggle="collapse" data-target="#clothing">
+                                    <a href="#">Lentes </a>
+                                    <ul class="sub-menu collapse show">
+                                        <li><a (click)="all()" >Todos</a></li>
+                                    </ul>
+                                    <ul class="sub-menu collapse show" *ngFor="let type of types">
+                                        <li><a (click)="filterByType(type.type)">{{ type.type }}</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                   <!-- Filtrar por marcas -->
+                    <div class="widget brands mb-50">
+                        <p class="widget-title2 mb-30">Marcas</p>
+                        <div class="widget-desc" *ngFor="let brand of brands">
+                            <ul >
+                                <li><a (click)="filterByBrand(brand.brand_name)">{{ brand.brand_name}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-8 col-lg-9">
+                <div class="shop_grid_product_area">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="product-topbar d-flex align-items-center justify-content-between">
+                                <div class="total-products">
+                                    <p><span>{{ total }}</span> productos encontrados</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="row">
+
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="single-product-wrapper">
+                                <div class="product-img">
+                                    <img src="assets/dist/img/product-img/product-1.jpg" alt="">
+                                    <img class="hover-img" src="assets/dist/img/product-img/product-2.jpg" alt="">
+
+                                    <div class="product-badge offer-badge">
+                                        <span>-30%</span>
+                                    </div>
+                                    <div class="product-favourite">
+                                        <a href="#" class="favme fa fa-heart"></a>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="product-description">
+                                    <span>topshop</span>
+                                    <a href="single-product-details.html">
+                                        <h6>Knot Front Mini Dress</h6>
+                                    </a>
+                                    <p class="product-price"><span class="old-price">$75.00</span> $55.00</p>
+
+                                    
+                                    <div class="hover-content">
+                                        
+                                        <div class="add-to-cart-btn">
+                                            <a href="#" class="btn essence-btn">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                
+                    <p-dataView #dv [value]="product" [paginator]="true" [rows]="9" layout="grid" >
+                        <ng-template layout="grid" let-product pTemplate="gridItem">
+                            <div class="p-col-12 p-md-4">
+                                <div class="product-grid-item card">
+                                    <div class="product-grid-item-content" >    
+                                        <img [src]="'assets/dist/img/product-img/'+ product.img" [alt]="product.img"/>
+                                        <div class="product-name" style="text-align: center;">
+                                            <a (click)="detail(product)">
+                                                <h6>{{product.description}}</h6>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="product-grid-item-bottom" style="text-align: center;">
+                                        <!-- <span class="product-price">${{product.price}}</span> -->
+                                        <p-button (click)="add(product)" icon="pi pi-shopping-cart" [disabled]="product.quantity < 1"></p-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </p-dataView>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

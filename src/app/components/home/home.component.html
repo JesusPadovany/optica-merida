@@ -1,0 +1,136 @@
+
+<!-- Foto de inicio -->
+<section class="welcome_area bg-img background-overlay" style="background-image: url(assets/dist/img/bg-img/bg-1.jpg);">
+  <div class="container h-100">
+      <div class="row h-100 align-items-center">
+          <div class="col-12">
+              <div class="hero-content">
+                  <h6>asoss</h6>
+                  <h2>Nuevos modelos</h2>
+                  <a href="#" class="btn essence-btn">ver</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+<!-- Categorias -->
+<div class="top_catagory_area section-padding-80 clearfix">
+  <div class="container">
+      <div class="row justify-content-center">
+          <!-- Single Catagory -->
+          <div class="col-12 col-sm-6 col-md-4">
+              <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(assets/dist/img/lente-contacto.jpg);">
+                  <div class="catagory-content">
+                      <a href="#">Lentillas</a>
+                  </div>
+              </div>
+          </div>
+          <!-- Single Catagory -->
+          <div class="col-12 col-sm-6 col-md-4">
+              <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(assets/dist/img/gafas-sol.jpg);">
+                  <div class="catagory-content">
+                      <a href="#">Lentes de sol</a>
+                  </div>
+              </div>
+          </div>
+          <!-- Single Catagory -->
+          <div class="col-12 col-sm-6 col-md-4">
+              <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(assets/dist/img/lentes-formula.jpg);">
+                  <div class="catagory-content">
+                      <a href="#">Formulados</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- publiciad descuento -->
+<div class="cta-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="cta-content bg-img background-overlay" style="background-image: url(assets/dist/img/bg-img/bg-5.jpg);">
+                    <div class="h-100 d-flex align-items-center justify-content-end">
+                        <div class="cta--text">
+                            <h6>-60%</h6>
+                            <h2>Descuentos</h2>
+                            <a href="#" class="btn essence-btn">Comprar ahora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Productos populares -->
+<section class="new_arrivals_area section-padding-80 clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading text-center">
+                    <h2>Productos populares</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p-carousel [value]="products" styleClass="custom-carousel" [numVisible]="3" 
+        [numScroll]="1" [circular]="true" [autoplayInterval]="3000" 
+        [responsiveOptions]="responsiveOptions"
+    >
+        <ng-template let-product pTemplate="item">
+            <div class="product-item">
+                <div class="product-item-content">
+                        <div class="p-mb-3">
+                            <!-- <img src="assets/dist/img/product-img/product-1.jpg" class="product-image" /> -->
+                            <img [src]="'assets/dist/img/product-img/'+ product.description" class="product-description" />
+                        </div>
+                        <div>
+                            <h4 class="p-mb-1">{{product.name}}</h4>
+                            <h6 class="p-mt-0 p-mb-3">${{product.price}}</h6>
+                            <h6 class="p-mt-0 p-mb-3">STOCK: {{product.quantity}}</h6>
+
+                            <div class="car-buttons p-mt-5">
+                                <p-button  type="button" styleClass="p-button-help p-button-rounded" icon="pi pi-shopping-cart"></p-button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-carousel>
+</section>
+
+
+<!-- Marcas ASOCIADAS-->
+<div class="brands-area d-flex align-items-center justify-content-between">
+  
+    <div class="single-brands-logo">
+        <img src="assets/dist/img/core-img/rayban-logo.png" alt="">
+    </div>
+  
+    <div class="single-brands-logo">
+        <img src="assets/dist/img/core-img/dior.png" alt="">
+    </div>
+    
+    <div class="single-brands-logo">
+        <img src="assets/dist/img/core-img/vogue.png" alt="">
+    </div>
+    
+    <div class="single-brands-logo">
+        <img src="assets/dist/img/core-img/tomford.png" alt="">
+    </div>
+    
+    <div class="single-brands-logo">
+        <img src="assets/dist/img/core-img/timberland.png" alt="">
+    </div>
+    
+    <div class="single-brands-logo">
+        <img src="assets/dist/img/core-img/hugoboss.png" alt="">
+    </div>
+</div>
+
+

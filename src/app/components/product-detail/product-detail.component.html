@@ -1,0 +1,28 @@
+
+<section class="single_product_details_area d-flex align-items-center">
+
+    <!-- Single Product Thumb -->
+    <div class="single_product_thumb clearfix">
+        <img [src]="'assets/dist/img/product-img/'+ product.img" [alt]="product.img"/>
+
+    </div>
+
+    <!-- Single Product Description -->
+    <div class="single_product_desc clearfix">
+        <span>{{product.brand}}</span>
+        <a href="#">
+            <h2>{{ product.description }}</h2>
+        </a>
+        <p class="product-price"><span class="old-price">$65.00</span>${{ product.price }}</p>
+        <p class="product-desc">{{ product.description }}</p>
+        <p class="product-stock"> <strong>STOCK:</strong> {{ product.stock }}</p>
+
+        
+        <form class="cart-form clearfix">    
+            <!-- Cart-->
+            <div class="cart-fav-box d-flex align-items-center">
+                <button  (click)="add()" name="addtocart" value="5" class="btn essence-btn">Agegar al carrito</button>
+            </div>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,4 @@
+.dataview-grid.ui-dataview .ui-dataview-header {
+    border-bottom: 0 none;
+    display: none;
+}

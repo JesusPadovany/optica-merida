@@ -1,0 +1,161 @@
+
+<header class="header_area">
+
+    <div class="classy-nav-container breakpoint-off d-flex align-items-center justify-content-between">
+      
+        <nav class="classy-navbar" id="essenceNav">
+    
+            <a class="nav-brand" [routerLink]="['']" routerLinkActive="active">
+                <img src="assets/dist/img/core-img/logo.png" alt="">
+            </a>
+    
+            <div class="classy-navbar-toggler">
+                <span class="navbarToggler"><span></span><span></span><span></span></span>
+            </div>
+    
+            <div class="classy-menu">
+                <div class="classycloseIcon">
+                    <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                </div>
+                <div class="classynav">
+                <ul>
+                    <li><a [routerLink]="['/shop']" routerLinkActive="active" >Shop</a>
+                        <!-- <div class="megamenu">
+                            <ul class="single-mega cn-col-4">
+                                <li class="title">Women's Collection</li>
+                                <li><a href="shop.html">Dresses</a></li>
+                                <li><a href="shop.html">Blouses &amp; Shirts</a></li>
+                                <li><a href="shop.html">T-shirts</a></li>
+                                <li><a href="shop.html">Rompers</a></li>
+                                <li><a href="shop.html">Bras &amp; Panties</a></li>
+                            </ul>
+                            <ul class="single-mega cn-col-4">
+                                <li class="title">Men's Collection</li>
+                                <li><a href="shop.html">T-Shirts</a></li>
+                                <li><a href="shop.html">Polo</a></li>
+                                <li><a href="shop.html">Shirts</a></li>
+                                <li><a href="shop.html">Jackets</a></li>
+                                <li><a href="shop.html">Trench</a></li>
+                            </ul>
+                            <ul class="single-mega cn-col-4">
+                                <li class="title">Kid's Collection</li>
+                                <li><a href="shop.html">Dresses</a></li>
+                                <li><a href="shop.html">Shirts</a></li>
+                                <li><a href="shop.html">T-shirts</a></li>
+                                <li><a href="shop.html">Jackets</a></li>
+                                <li><a href="shop.html">Trench</a></li>
+                            </ul>
+                            <div class="single-mega cn-col-4">
+                                <img src="assets/dist/img/bg-img/bg-6.jpg" alt="">
+                            </div>
+                        </div> -->
+                    </li>
+                    <li><a [routerLink]="['/about-us']" routerLinkActive="active" >Nosotros</a>
+                    </li>
+                    <li><a [routerLink]="['/contact']" routerLinkActive="active" >Contacto</a></li>
+                </ul>
+                </div>
+            </div>
+        </nav>
+  
+        
+        <div class="header-meta d-flex clearfix justify-content-end">
+            <div [hidden]="!logIn" class="user-login-info">
+                <a [routerLink]="['/login']" routerLinkActive="active">
+                    Login
+                </a>
+            </div>
+            <div [hidden]="logIn" class="user-login-info">
+                <a [routerLink]="['/profile']" routerLinkActive="active">
+                    <img src="assets/dist/img/core-img/user.svg" alt="">
+                    Perfil
+                </a>
+            </div>
+            <div [hidden]="logIn" class="cart-area">
+                <a [routerLink]="['/car']" routerLinkActive="active" id="essenceCartBtn"><img src="assets/dist/img/core-img/bag.svg" alt=""> 
+                    <span>{{car.length}}</span>
+                </a>
+            </div>
+        </div>
+  
+    </div>
+</header>
+  
+  
+  
+<div class="cart-bg-overlay"></div>
+  
+<!-- Resumen del carrito -->
+<div class="right-side-cart-area">
+
+    <!-- Cart Button -->
+    <div class="cart-button">
+        <a href="#" id="rightSideCart"><img src="assets/dist/img/core-img/bag.svg" alt=""> <span>3</span></a>
+    </div>
+
+    <div class="cart-content d-flex">
+
+        <!-- Cart List Area -->
+        <div class="cart-list">
+            <!-- Single Cart Item -->
+            <div class="single-cart-item">
+                <a href="#" class="product-image">
+                    <img src="assets/dist/img/product-img/product-1.jpg" class="cart-thumb" alt="">
+                    <!-- Cart Item Desc -->
+                    <div class="cart-item-desc">
+                        <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
+                        <span class="badge">Mango</span>
+                        <h6>Button Through Strap Mini Dress</h6>
+                        <p class="size">Size: S</p>
+                        <p class="color">Color: Red</p>
+                        <p class="price">$45.00</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Single Cart Item -->
+            <div class="single-cart-item">
+                <a href="#" class="product-image">
+                    <img src="assets/dist/img/product-img/product-2.jpg" class="cart-thumb" alt="">
+                    <!-- Cart Item Desc -->
+                    <div class="cart-item-desc">
+                        <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
+                        <span class="badge">Mango</span>
+                        <h6>Button Through Strap Mini Dress</h6>
+                        <p class="size">Size: S</p>
+                        <p class="color">Color: Red</p>
+                        <p class="price">$45.00</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="single-cart-item">
+                <a href="#" class="product-image">
+                    <img src="assets/dist/img/product-img/product-3.jpg" class="cart-thumb" alt="">
+                    <div class="cart-item-desc">
+                        <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
+                        <span class="badge">Mango</span>
+                        <h6>Button Through Strap Mini Dress</h6>
+                        <p class="size">Size: S</p>
+                        <p class="color">Color: Red</p>
+                        <p class="price">$45.00</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="cart-amount-summary">
+
+            <h2>Summary</h2>
+            <ul class="summary-table">
+                <li><span>subtotal:</span> <span>$274.00</span></li>
+                <li><span>delivery:</span> <span>Free</span></li>
+                <li><span>discount:</span> <span>-15%</span></li>
+                <li><span>total:</span> <span>$232.00</span></li>
+            </ul>
+            <div class="checkout-btn mt-100">
+                <a href="" class="btn essence-btn">check out</a>
+            </div>
+        </div>
+    </div>
+</div>
