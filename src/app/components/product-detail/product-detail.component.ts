@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Inventario } from 'src/app/models';
+import { UserLocalStorageService, AuthService, CarritoService  } from '../../services';
+
 
 
 @Component({
@@ -11,15 +14,23 @@ export class ProductDetailComponent implements OnInit {
 
   product: any={};
   id: any;
+
   constructor(
     private route: ActivatedRoute,
-
+    private carritoService: CarritoService,
   ) { }
 
   ngOnInit() {
 
     this.id = this.route.snapshot.params['id'];
 
+    /*Get producto*/
+    this.getProductById();
+    
+  }
+
+  getProductById() {
+    
     this.product = {
       id_: 1,
       idtipo_lente: 2,
@@ -31,14 +42,14 @@ export class ProductDetailComponent implements OnInit {
       codigo: "12361",
       tipo:"De sol",
       marca:"Rayband"
-    },
-    this.consult();
+    }
+
+    //Petición promise
   }
 
-  consult(){};
-
-  add(){
-    console.log("añadido al carrito");
+  addShoppingCar(product: Inventario){
+    
+    this.carritoService.addCarrito(product);
   }
 
 }

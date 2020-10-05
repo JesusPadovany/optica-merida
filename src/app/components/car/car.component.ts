@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Carrito, Inventario } from 'src/app/models';
+import { UserLocalStorageService, AuthService, CarritoService  } from '../../services';
 
 @Component({
   selector: 'app-car',
@@ -8,48 +9,32 @@ import { Carrito, Inventario } from 'src/app/models';
 })
 export class CarComponent implements OnInit {
 
-  product: Carrito[];
+  product: Inventario[];
   total: number= 0;
 
-  constructor() { }
+  constructor(
+    private carritoService: CarritoService,
+  ) { }
 
   ngOnInit() {
 
-    this.product = [
-  
-      {
-        id_: 1,
-        img: "product-3.jpg",
-        description: "Lentes C",
-        price: "90",
-        brand:"Vogue"
-      },
-      {
-        id_: 1,
-       
-        img: "product-4.jpg",
-        description: "Lentes D",
-        price: "100",
-        brand:"Tom Ford"
-      },
-     
-      
-    ]
-
+    this.getCarLocalStorage();
     this.total_pagar();
-    
+  }
+
+  getCarLocalStorage() {
+    let carrito = this.carritoService.getCarrito();
+    this.product = JSON.parse(carrito);
   }
 
   total_pagar(){
     this.product.forEach(element => {
-      this.total +=  parseInt (element.price);
+      this.total +=  parseInt (element.precio);
     });
   }
 
-  remove(product : Carrito){
-
-    //Se elimina ese reg 
-
-    //Se vuelve a consultar el carrito del usuario
-  }
+  // remove(product : Carrito){
+    
+  //   this.total_pagar();
+  // }
 }

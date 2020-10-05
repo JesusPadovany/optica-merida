@@ -86,7 +86,6 @@
             <div class="product-item">
                 <div class="product-item-content">
                         <div class="p-mb-3">
-                            <!-- <img src="assets/dist/img/product-img/product-1.jpg" class="product-image" /> -->
                             <img [src]="'assets/dist/img/product-img/'+ product.foto" class="product-foto" />
                         </div>
                         <div>
@@ -95,7 +94,7 @@
                             <h6 class="p-mt-0 p-mb-3">STOCK: {{product.cantidad_total}}</h6>
 
                             <div class="car-buttons p-mt-5">
-                                <p-button  type="button" styleClass="p-button-help p-button-rounded" icon="pi pi-shopping-cart"></p-button>
+                                <p-button  (click)="addShoppingCar(product)" type="button" styleClass="p-button-help p-button-rounded" icon="pi pi-shopping-cart"></p-button>
                             </div>
                         </div>
                 </div>

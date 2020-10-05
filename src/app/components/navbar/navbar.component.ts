@@ -11,8 +11,11 @@ export class NavbarComponent implements OnInit {
   user: User;
   logIn: boolean = true;
   car: Carrito[];
+  shoppingCar:any;
 
-  constructor() { }
+  constructor() { 
+    this.shoppingCar = 0;
+  }
 
   ngOnInit() {
 

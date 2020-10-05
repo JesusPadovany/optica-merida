@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { User, Inventario } from '../../models';
+import { UserLocalStorageService, AuthService, CarritoService  } from '../../services';
 
-import { User, RolModelo, Inventario } from '../../models';
-import { UserLocalStorageService, AuthService } from '../../services';
 
 @Component({
   selector: 'app-home',
@@ -15,15 +15,17 @@ export class HomeComponent implements OnInit {
   products: Inventario[];
   user: User={};
 
-  constructor(private srvAuthService: AuthService) { 
+  constructor(
+    private srvAuthService: AuthService,
+    private carritoService: CarritoService,
+  ) { 
   }
 
   ngOnInit() {
 
+    /*Obtener datos del usuario del localstorage*/
     // let currentUser = this.srvAuthService.getCurrentUser();
     // this.user = JSON.parse(currentUser);
-
-    /* Se obtine todos los roles del usuario de sesion */
     
     this.responsiveOptions = [
       {
@@ -42,6 +44,13 @@ export class HomeComponent implements OnInit {
         numScroll: 1
       }
     ];  
+
+    /*Traerse solo 10 elemntos del stock*/
+    this.getSomeProducts();
+   
+  }
+
+  getSomeProducts() {
 
     this.products = [
       {
@@ -101,7 +110,14 @@ export class HomeComponent implements OnInit {
       },
       
     ]
+
+    //Petición promise
   }
   
+  addShoppingCar(product: Inventario){
+    
+    this.carritoService.addCarrito(product);
+    
+  }
 
 }
