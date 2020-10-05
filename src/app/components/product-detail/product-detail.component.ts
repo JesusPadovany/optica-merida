@@ -22,15 +22,15 @@ export class ProductDetailComponent implements OnInit {
 
     this.product = {
       id_: 1,
-      id_lensType: 2,
-      id_brand: 3,
-      quantity: 10,
-      img: "product-1.jpg",
-      description: "Lentes A",
-      price: "40",
-      code: "12361",
-      type:"De sol",
-      brand:"Rayband"
+      idtipo_lente: 2,
+      idmarca: 3,
+      cantidad_total: 10,
+      foto: "product-1.jpg",
+      descripcion: "Lentes A",
+      precio: "40",
+      codigo: "12361",
+      tipo:"De sol",
+      marca:"Rayband"
     },
     this.consult();
   }

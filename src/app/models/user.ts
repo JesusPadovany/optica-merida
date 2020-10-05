@@ -1,11 +1,15 @@
 
 export interface User {
     id_?,
-    first_name?,
-    last_name?,
+    nombres?,
+    apellidos?,
     username?,
     password?,
     email?,
-    phone?,
-    address?
+    numero_tarjeta?,
+    telefono?,
+    direccion?
+
+    //Otras
+    id_usuarios?,
 }

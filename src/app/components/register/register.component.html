@@ -10,10 +10,10 @@
               <h3 class="login-heading mb-4">¡Registrate!</h3>
               <form [formGroup]="registerForm" (ngSubmit)="register()">
                 <div class="form-group">
-                  <input [(ngModel)]="user.first_name" type="text" class="form-control"  formControlName="first_name" placeholder="Nombre*" required>
+                  <input [(ngModel)]="user.nombres" type="text" class="form-control"  formControlName="first_name" placeholder="Nombre*" required>
                 </div>
                 <div class="form-group">
-                  <input [(ngModel)]="user.last_name" type="text"  class="form-control"  formControlName="last_name" placeholder="Apellido*" required>
+                  <input [(ngModel)]="user.apellidos" type="text"  class="form-control"  formControlName="last_name" placeholder="Apellido*" required>
                 </div>
                 <div class="form-group">
                   <input [(ngModel)]="user.username" type="text" class="form-control"  formControlName="username" placeholder="Username*" required>
@@ -22,10 +22,10 @@
                   <input [(ngModel)]="user.email" type="email"  class="form-control"  formControlName="email" placeholder="Correo*" required autofocus>
                 </div>
                 <div class="form-group">
-                  <input [(ngModel)]="user.address" type="text" class="form-control"  formControlName="address" placeholder="Dirección*" required>
+                  <input [(ngModel)]="user.direccion" type="text" class="form-control"  formControlName="address" placeholder="Dirección*" required>
                 </div>
                 <div class="form-group">
-                  <input [(ngModel)]="user.phone" type="text" class="form-control"  formControlName="phone" placeholder="Teléfono*" required>
+                  <input [(ngModel)]="user.telefono" type="text" class="form-control"  formControlName="phone" placeholder="Teléfono*" required>
                 </div>
                 <div class="form-group">
                   <input [(ngModel)]="user.password" type="password" class="form-control"  formControlName="password" placeholder="Contraseña*" required>

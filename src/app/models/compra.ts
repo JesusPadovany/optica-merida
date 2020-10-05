@@ -7,4 +7,11 @@ export interface Compra {
     date?,
     total?,
 
+    //otros
+    idcompra?,
+    idusuario?,
+    idinventario?,
+    cantidad?,
+    fecha_compra?,
+
 }

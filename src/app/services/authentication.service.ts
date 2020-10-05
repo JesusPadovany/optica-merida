@@ -19,12 +19,12 @@ export class AuthenticationService {
        
     }
 
-    login(username: string, password: string) : Observable<User> {
+    login(usuario: string, contrasenia: string) : Observable<User> {
 
         this.url = environment.apiUrl +  'login';
-        const md5Pass = String(Md5.hashStr(password));
+        const md5Pass = String(Md5.hashStr(contrasenia));
 
-        return this.http.post<User>(this.url , { usuario: username, contrasenia: md5Pass })
+        return this.http.post<User>(this.url , { username: usuario, password: md5Pass })
     }
 
     register(user: User) : Observable<User> {

@@ -1,15 +1,18 @@
 
 export interface Inventario {
     id_,
-    id_lensType?,
-    id_brand?,
-    quantity?,
-    img?,
-    description?,
-    price?,
-    code?,
+  
+    
+    tipo_lente?,
+    marca?,
 
-
-    type?,
-    brand?,
+    //otro
+    idinventario?,
+    idtipo_lente?,
+    idmarca,
+    cantidad_total?,
+    descripcion?,
+    codigo?,
+    foto?,
+    precio?,
 }

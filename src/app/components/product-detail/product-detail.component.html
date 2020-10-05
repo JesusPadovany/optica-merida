@@ -3,19 +3,19 @@
 
     <!-- Single Product Thumb -->
     <div class="single_product_thumb clearfix">
-        <img [src]="'assets/dist/img/product-img/'+ product.img" [alt]="product.img"/>
+        <img [src]="'assets/dist/img/product-img/'+ product.foto" [alt]="product.foto"/>
 
     </div>
 
     <!-- Single Product Description -->
     <div class="single_product_desc clearfix">
-        <span>{{product.brand}}</span>
+        <span>{{product.marca}}</span>
         <a href="#">
-            <h2>{{ product.description }}</h2>
+            <h2>{{ product.descripcion }}</h2>
         </a>
-        <p class="product-price"><span class="old-price">$65.00</span>${{ product.price }}</p>
+        <p class="product-price"><span class="old-price">$65.00</span>${{ product.precio }}</p>
         <p class="product-desc">{{ product.description }}</p>
-        <p class="product-stock"> <strong>STOCK:</strong> {{ product.stock }}</p>
+        <p class="product-stock"> <strong>STOCK:</strong> {{ product.cantidad_total }}</p>
 
         
         <form class="cart-form clearfix">    

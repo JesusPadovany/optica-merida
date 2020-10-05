@@ -1,5 +1,9 @@
 
 export interface Marca {
     id_,
-    brand_name?,
+    nombre_marca?,
+    
+    //Otro
+    idmarca?,
+
 }

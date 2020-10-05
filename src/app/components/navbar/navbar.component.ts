@@ -19,12 +19,12 @@ export class NavbarComponent implements OnInit {
     //Consultar usuario
     this.user = {
       id_:2,
-      first_name: "Maria",
-      last_name: "Lopez",
+      nombres: "Maria",
+      apellidos: "Lopez",
       username:"mlopez",
       password:"1234",
       email:"maria@gmail.com",
-      phone:"0412-1234567"
+      telefono:"0412-1234567"
     }
 
     //Consultar sus items en el carrito

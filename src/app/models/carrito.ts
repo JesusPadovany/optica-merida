@@ -4,6 +4,11 @@ export interface Carrito {
     id_user?,
     id_stock?
 
+
+    //Otras
+    idcarrito?,
+    idusuarios?,
+    idinventario?,
     img?,
     description?,
     price?,

@@ -17,7 +17,7 @@
                 <div class="profile-img">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
                     <div class="file btn btn-lg btn-primary">
-                        Change Photo
+                        Cambiar foto
                         <input type="file" name="file"/>
                     </div>
                 </div>
@@ -25,11 +25,11 @@
             <div class="col-md-6">
                 <div class="profile-head">
                     <h5>
-                        {{ user.first_name}} {{ user.last_name }}
+                        {{ user.nombres}} {{ user.apellidos }}
                     </h5>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Acerca</a>
                         </li>
                     </ul>
                 </div>
@@ -42,7 +42,7 @@
             <div class="col-md-4">
                 <div class="profile-work">
                     <p>OPCIONES</p>
-                    <a href="">Cerrar sesión</a><br/>
+                    <a [routerLink]="['/logout']" routerLinkActive="active">Cerrar sesión</a><br/>
                 </div>
             </div>
             <div class="col-md-8">
@@ -69,7 +69,15 @@
                                 <label>Teléfono</label>
                             </div>
                             <div class="col-md-6">
-                                <p>{{ user.phone}}</p>
+                                <p>{{ user.telefono}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Dirección</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{ user.direccion}}</p>
                             </div>
                         </div>
                     </div>
