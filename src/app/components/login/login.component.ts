@@ -51,8 +51,6 @@ export class LoginComponent implements OnInit {
 
     login() {
 
-        console.log(this.model);
-
         this.authenticationService.login(this.model.usuario, this.model.password)
         .toPromise()
         .then(results => {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Inventario } from 'src/app/models';
-import { UserLocalStorageService, CarritoService  } from '../../services';
+import { UserLocalStorageService, CarritoService, InventarioService  } from '../../services';
 import { MessageService } from 'primeng/api';
 
 
@@ -19,7 +19,8 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private carritoService: CarritoService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private inventarioService: InventarioService,
   ) { }
 
   ngOnInit() {
@@ -47,6 +48,14 @@ export class ProductDetailComponent implements OnInit {
     }
 
     //Petición promise
+    //  this.inventarioService.getById(this.id)
+    // .toPromise()
+    // .then(results => { 
+    //   this.product = results;
+    // })
+    // .catch( err => { 
+    //   console.log(err);
+    // });
   }
 
   addShoppingCar(product: Inventario){

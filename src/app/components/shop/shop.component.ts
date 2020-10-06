@@ -3,8 +3,15 @@ import { Inventario } from 'src/app/models/inventario';
 import { Marca } from 'src/app/models/marca';
 import { TipoLente } from 'src/app/models/tipo-lente';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UserLocalStorageService, CarritoService  } from '../../services';
 import { MessageService } from 'primeng/api';
+import { 
+  UserLocalStorageService, 
+  AuthService, 
+  CarritoService,   
+  MarcaService,
+  TipoLenteService,
+  InventarioService
+} from '../../services';
 
 @Component({
   selector: 'app-shop',
@@ -94,6 +101,9 @@ export class ShopComponent implements OnInit {
     private router: Router,
     private carritoService: CarritoService,
     private messageService: MessageService,
+    private tipoLenteService: TipoLenteService,
+    private marcaService: MarcaService,
+    private inventarioService: InventarioService,
   ) { }
 
   ngOnInit() {
@@ -184,6 +194,14 @@ export class ShopComponent implements OnInit {
     this.total= this.product.length;
 
     //Peticion promise
+    // this.inventarioService.getAll()
+    // .toPromise()
+    // .then(results => { 
+    //   this.product= results;
+    // })
+    // .catch( err => { 
+    //   console.log(err);
+    // });
   }
 
   getAllBrands() {
@@ -224,6 +242,14 @@ export class ShopComponent implements OnInit {
     ]
 
     //Peticion promise
+    // this.marcaService.getAll()
+    // .toPromise()
+    // .then(results => { 
+    //   this.brands= results;
+    // })
+    // .catch( err => { 
+    //   console.log(err);
+    // });
   }
 
   getAllTypeOfLens() {
@@ -244,6 +270,14 @@ export class ShopComponent implements OnInit {
     ]
 
     //Peticion promise
+    // this.tipoLenteService.getAll()
+    // .toPromise()
+    // .then(results => { 
+    //   this.types= results;
+    // })
+    // .catch( err => { 
+    //   console.log(err);
+    // });
   }
 
 

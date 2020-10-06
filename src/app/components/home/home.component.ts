@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User, Inventario } from '../../models';
-import { UserLocalStorageService, AuthService, CarritoService  } from '../../services';
+import { UserLocalStorageService, AuthService, CarritoService, InventarioService  } from '../../services';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit {
     private srvAuthService: AuthService,
     private carritoService: CarritoService,
     private messageService: MessageService,
+    private inventarioService: InventarioService,
+
   ) { 
   }
 
@@ -113,8 +115,17 @@ export class HomeComponent implements OnInit {
     ]
 
     //Petición promise
+    //  this.inventarioService.getAll()
+    // .toPromise()
+    // .then(results => { 
+    //   this.products = results;
+    // })
+    // .catch( err => { 
+    //   console.log(err);
+    // });
   }
   
+
   addShoppingCar(product: Inventario){
     
     this.carritoService.addCarrito(product);

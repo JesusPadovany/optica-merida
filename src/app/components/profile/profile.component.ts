@@ -1,18 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models';
+import { UserLocalStorageService, AuthService} from '../../services';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  providers: [AuthService, UserLocalStorageService]
+
 })
 export class ProfileComponent implements OnInit {
 
   user: User;
 
-  constructor() { }
+  constructor(
+    private srvAuthService: AuthService
+  ) { }
 
   ngOnInit() {
+
+    /*Obtener datos del usuario del localstorage*/
+    // let currentUser = this.srvAuthService.getCurrentUser();
+    // this.user = JSON.parse(currentUser);
 
     this.user = {
       id_:2,
