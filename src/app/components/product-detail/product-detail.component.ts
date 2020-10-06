@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Inventario } from 'src/app/models';
-import { UserLocalStorageService, AuthService, CarritoService  } from '../../services';
-
+import { UserLocalStorageService, CarritoService  } from '../../services';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.css']
+  styleUrls: ['./product-detail.component.css'],
+  providers: [MessageService]
 })
 export class ProductDetailComponent implements OnInit {
 
@@ -18,6 +19,7 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private carritoService: CarritoService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -50,6 +52,13 @@ export class ProductDetailComponent implements OnInit {
   addShoppingCar(product: Inventario){
     
     this.carritoService.addCarrito(product);
+    this.showMessage("Producto agregado al carrito");
+
+  }
+
+  private showMessage(msg: string) {
+    this.messageService.clear();
+    this.messageService.add({ key: 'tc', severity: 'success', summary: msg });
   }
 
 }

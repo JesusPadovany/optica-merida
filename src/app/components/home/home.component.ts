@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { User, Inventario } from '../../models';
 import { UserLocalStorageService, AuthService, CarritoService  } from '../../services';
-
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [AuthService, UserLocalStorageService]
+  providers: [AuthService, UserLocalStorageService,MessageService]
 })
 export class HomeComponent implements OnInit {
 
@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private srvAuthService: AuthService,
     private carritoService: CarritoService,
+    private messageService: MessageService,
   ) { 
   }
 
@@ -117,7 +118,12 @@ export class HomeComponent implements OnInit {
   addShoppingCar(product: Inventario){
     
     this.carritoService.addCarrito(product);
+    this.showMessage("Producto agregado al carrito");
     
   }
 
+  private showMessage(msg: string) {
+    this.messageService.clear();
+    this.messageService.add({ key: 'tc', severity: 'success', summary: msg });
+  }
 }

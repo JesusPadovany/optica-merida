@@ -1,20 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Carrito, User } from 'src/app/models';
+import { CarritoService} from '../../services/carrito.service'
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy{
 
   user: User;
   logIn: boolean = true;
   car: Carrito[];
   shoppingCar:any;
+  subscription: any;
 
-  constructor() { 
+  constructor(
+    private carritoService: CarritoService
+  ) { 
     this.shoppingCar = 0;
+
+    this.subscription = this.carritoService.getChangeEmitter()
+    .subscribe(item => this.setNumber(item));
   }
 
   ngOnInit() {
@@ -30,24 +37,18 @@ export class NavbarComponent implements OnInit {
       telefono:"0412-1234567"
     }
 
-    //Consultar sus items en el carrito
-    this.car = [
-      {
-        id_:1,
-        id_user:2,
-        id_stock:3
-      },
-      {
-        id_:2,
-        id_user:2,
-        id_stock:4
-      }
-    ] 
-
     if(this.user != undefined){
       this.logIn=false;
     }
   
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  setNumber(cant: number){
+    this.shoppingCar = cant;
   }
 
 }

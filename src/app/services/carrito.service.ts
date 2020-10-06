@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Inventario } from '../models';
 
 @Injectable({
@@ -7,6 +7,7 @@ import { Inventario } from '../models';
 export class CarritoService {
 
   shoppingCar: Inventario[]= [];
+  change: EventEmitter<number> = new EventEmitter();
 
   constructor() 
   {
@@ -30,6 +31,15 @@ export class CarritoService {
     this.shoppingCar = JSON.parse(aux);
     this.shoppingCar.push(car);
     this.setCarrito(this.shoppingCar);
+    this.emitChangeEvent(this.shoppingCar.length);
+  }
+
+  emitChangeEvent(number) {
+    this.change.emit(number);
+  }
+
+  getChangeEmitter() {
+    return this.change;
   }
 
 }

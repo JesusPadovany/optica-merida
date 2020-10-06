@@ -3,12 +3,14 @@ import { Inventario } from 'src/app/models/inventario';
 import { Marca } from 'src/app/models/marca';
 import { TipoLente } from 'src/app/models/tipo-lente';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UserLocalStorageService, AuthService, CarritoService  } from '../../services';
+import { UserLocalStorageService, CarritoService  } from '../../services';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.css']
+  styleUrls: ['./shop.component.css'],
+  providers: [MessageService]
 })
 export class ShopComponent implements OnInit {
 
@@ -21,7 +23,7 @@ export class ShopComponent implements OnInit {
       cantidad_total: 10,
       foto: "product-1.jpg",
       descripcion: "Lentes A",
-      precio: "40",
+      precio: "10",
       codigo: "12361",
       tipo_lente:"De sol",
       marca:"Rayband"
@@ -35,7 +37,7 @@ export class ShopComponent implements OnInit {
       cantidad_total: 10,
       foto: "product-2.jpg",
       descripcion: "Lentes B",
-      precio: "40",
+      precio: "30",
       codigo: "12361",
       tipo_lente:"De sol",
       marca:"Dior"
@@ -61,7 +63,7 @@ export class ShopComponent implements OnInit {
       cantidad_total: 10,
       foto: "product-4.jpg",
       descripcion: "Lentes D",
-      precio: "40",
+      precio: "50",
       codigo: "12361",
       tipo_lente:"Formulados",
       marca:"Tom Ford"
@@ -91,6 +93,7 @@ export class ShopComponent implements OnInit {
   constructor(
     private router: Router,
     private carritoService: CarritoService,
+    private messageService: MessageService,
   ) { }
 
   ngOnInit() {
@@ -117,7 +120,7 @@ export class ShopComponent implements OnInit {
         cantidad_total: 10,
         foto: "product-1.jpg",
         descripcion: "Lentes A",
-        precio: "40",
+        precio: "10",
         codigo: "12361",
         tipo_lente:"De sol",
         marca:"Rayband"
@@ -131,7 +134,7 @@ export class ShopComponent implements OnInit {
         cantidad_total: 10,
         foto: "product-2.jpg",
         descripcion: "Lentes B",
-        precio: "40",
+        precio: "30",
         codigo: "12361",
         tipo_lente:"De sol",
         marca:"Dior"
@@ -157,7 +160,7 @@ export class ShopComponent implements OnInit {
         cantidad_total: 10,
         foto: "product-4.jpg",
         descripcion: "Lentes D",
-        precio: "40",
+        precio: "50",
         codigo: "12361",
         tipo_lente:"Formulados",
         marca:"Tom Ford"
@@ -276,11 +279,19 @@ export class ShopComponent implements OnInit {
   addShoppingCar(product: Inventario){
     
     this.carritoService.addCarrito(product);
+    this.showMessage("Producto agregado al carrito");
+    
   }
 
   
   detail(product: Inventario){
     this.router.navigate(['product-detail', product.id_]);
+  }
+
+  
+  private showMessage(msg: string) {
+    this.messageService.clear();
+    this.messageService.add({ key: 'tc', severity: 'success', summary: msg });
   }
 
 }
