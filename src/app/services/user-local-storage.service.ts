@@ -4,8 +4,6 @@ import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from "rxjs";
 import { RolModelo } from '../models';
-import { environment } from '../../environments/environment';
-
 
 @Injectable({
   providedIn: 'root'

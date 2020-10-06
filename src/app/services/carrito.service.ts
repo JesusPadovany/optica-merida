@@ -6,6 +6,7 @@ import { Inventario } from '../models';
 })
 export class CarritoService {
 
+  private url: string;
   shoppingCar: Inventario[]= [];
   change: EventEmitter<number> = new EventEmitter();
 

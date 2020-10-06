@@ -1,23 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-
 import { User } from '../models/index';
 import { Md5 } from "ts-md5/dist/md5";
 import { Observable } from 'rxjs';
-
-
-
 
 @Injectable()
 export class AuthenticationService {
 
     private url : string;
 
-    constructor(private http: HttpClient)
-    { 
-       
-    }
+    constructor(private http: HttpClient){ }
 
     login(usuario: string, contrasenia: string) : Observable<User> {
 
@@ -27,6 +20,7 @@ export class AuthenticationService {
         return this.http.post<User>(this.url , { username: usuario, password: md5Pass })
     }
 
+    
     register(user: User) : Observable<User> {
 
         this.url = environment.apiUrl +  'create';
