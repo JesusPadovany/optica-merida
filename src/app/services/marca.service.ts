@@ -48,9 +48,9 @@ export class MarcaService {
     );
   }
 
-  delete(idMarca: number) {
+  delete(marca: number) {
 
-    const url = `${this.url}/${idMarca}`;
+    const url = `${this.url}/${marca}`;
     return this.http.delete(url).pipe(
       tap(result => {
       }),

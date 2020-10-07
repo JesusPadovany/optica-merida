@@ -9,8 +9,8 @@ export interface Compra {
 
     //otros
     idcompra?,
-    idusuario?,
-    idinventario?,
+    usuario?,
+    inventario?,
     cantidad?,
     fecha_compra?,
 

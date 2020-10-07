@@ -1,5 +1,5 @@
 <p-table  #dt editMode="row" [value]="marcas" [responsive]="true" [columns]="cols" selectionMode="single" 
-    [paginator]="true" [rows]="10" [scrollable]="true" scrollHeight="500px" dataKey="idmarca" 
+    [paginator]="true" [rows]="10" [scrollable]="true" scrollHeight="500px" dataKey="marca" 
     [rowsPerPageOptions]="[10,25,50]" >
     
     <!--Inicio [Búsqueda]  -->
@@ -24,7 +24,7 @@
     <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr [pEditableRow]>
             <td [ngStyle]="{'width': '10%'}"  class="text-center">
-                {{ rowData.idmarca }}
+                {{ rowData.marca }}
             </td>                    
             <td [ngStyle]="{'width': '80%'}" class="text-center">
                 {{ rowData.nombre_marca }}

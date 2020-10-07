@@ -66,7 +66,7 @@ export class InventarioComponent implements OnInit {
 
     this.myForm = this.fb.group({
       idtipo_lente: ['', [Validators.required]],
-      idmarca: ['', [Validators.required]],
+      marca: ['', [Validators.required]],
       cantidad_total: ['', [Validators.required]],
       descripcion: ['', [Validators.required,Validators.minLength(1), Validators.maxLength (20)]],
       codigo: ['', [Validators.required,Validators.minLength(1), Validators.maxLength (20)]],
@@ -76,76 +76,76 @@ export class InventarioComponent implements OnInit {
   }
 
   consultProducts() {
+    this.inventarioService.getAll().subscribe( (data) => this.productos = data )
+    // this.productos =  [
+    //   {
+    //     id_: 1,
+    //     idinventario:2,
+    //     idtipo_lente:3,
+    //     marca:4,
+    //     cantidad_total: 10,
+    //     foto: "product-1.jpg",
+    //     descripcion: "Lentes A",
+    //     precio: "10",
+    //     codigo: "12361",
+    //     tipo_lente:"De sol",
+    //     marca:"Rayband"
+    //   },
     
-    this.productos =  [
-      {
-        id_: 1,
-        idinventario:2,
-        idtipo_lente:3,
-        idmarca:4,
-        cantidad_total: 10,
-        foto: "product-1.jpg",
-        descripcion: "Lentes A",
-        precio: "10",
-        codigo: "12361",
-        tipo_lente:"De sol",
-        marca:"Rayband"
-      },
-    
-      {
-        id_: 1,
-        idinventario:2,
-        idtipo_lente:3,
-        idmarca:4,
-        cantidad_total: 10,
-        foto: "product-2.jpg",
-        descripcion: "Lentes B",
-        precio: "30",
-        codigo: "12361",
-        tipo_lente:"De sol",
-        marca:"Dior"
-      },
-      {
-        id_: 1,
-        idinventario:2,
-        idtipo_lente:3,
-        idmarca:4,
-        cantidad_total: 10,
-        foto: "product-3.jpg",
-        descripcion: "Lentes C",
-        precio: "40",
-        codigo: "12361",
-        tipo_lente:"Formulados",
-        marca:"Vogue"
-      },
-      {
-        id_: 1,
-        idinventario:2,
-        idtipo_lente:3,
-        idmarca:4,
-        cantidad_total: 10,
-        foto: "product-4.jpg",
-        descripcion: "Lentes D",
-        precio: "50",
-        codigo: "12361",
-        tipo_lente:"Formulados",
-        marca:"Tom Ford"
-      },
-      {
-        id_: 1,
-        idinventario:2,
-        idtipo_lente:3,
-        idmarca:4,
-        cantidad_total: 10,
-        foto: "product-5.jpg",
-        descripcion: "Lentes E",
-        precio: "40",
-        codigo: "12361",
-        tipo_lente:"De contacto",
-        marca:"Timberland"
-      },
+    //   {
+    //     id_: 1,
+    //     idinventario:2,
+    //     idtipo_lente:3,
+    //     marca:4,
+    //     cantidad_total: 10,
+    //     foto: "product-2.jpg",
+    //     descripcion: "Lentes B",
+    //     precio: "30",
+    //     codigo: "12361",
+    //     tipo_lente:"De sol",
+    //     marca:"Dior"
+    //   },
+    //   {
+    //     id_: 1,
+    //     idinventario:2,
+    //     idtipo_lente:3,
+    //     marca:4,
+    //     cantidad_total: 10,
+    //     foto: "product-3.jpg",
+    //     descripcion: "Lentes C",
+    //     precio: "40",
+    //     codigo: "12361",
+    //     tipo_lente:"Formulados",
+    //     marca:"Vogue"
+    //   },
+    //   {
+    //     id_: 1,
+    //     idinventario:2,
+    //     idtipo_lente:3,
+    //     marca:4,
+    //     cantidad_total: 10,
+    //     foto: "product-4.jpg",
+    //     descripcion: "Lentes D",
+    //     precio: "50",
+    //     codigo: "12361",
+    //     tipo_lente:"Formulados",
+    //     marca:"Tom Ford"
+    //   },
+    //   {
+    //     id_: 1,
+    //     idinventario:2,
+    //     idtipo_lente:3,
+    //     marca:4,
+    //     cantidad_total: 10,
+    //     foto: "product-5.jpg",
+    //     descripcion: "Lentes E",
+    //     precio: "40",
+    //     codigo: "12361",
+    //     tipo_lente:"De contacto",
+    //     marca:"Timberland"
+    //   },
       
-    ]
+    // ]
 
     //Petición promise
     // this.inventarioService.getAll()
@@ -157,32 +157,33 @@ export class InventarioComponent implements OnInit {
 
   consultType() {
 
-    this.tipos= [
-      {
-        idtipo_lente:1,
-        tipo_lente:"De sol",
-      },
-      {
-        idtipo_lente:2,
-        tipo_lente:"Formulados",
-      },
-      {
-        idtipo_lente:3,
-        tipo_lente:"De contacto",
-      },
-      {
-        idtipo_lente:4,
-        tipo_lente:"Otro",
-      },
-      {
-        idtipo_lente:5,
-        tipo_lente:"Otroo",
-      },
-      {
-        idtipo_lente:6,
-        tipo_lente:"Otrooo",
-      }
-    ]
+    this.tipoLenteService.getAll().subscribe( (data) => this.tipos = data )
+    // this.tipos= [
+    //   {
+    //     idtipo_lente:1,
+    //     tipo_lente:"De sol",
+    //   },
+    //   {
+    //     idtipo_lente:2,
+    //     tipo_lente:"Formulados",
+    //   },
+    //   {
+    //     idtipo_lente:3,
+    //     tipo_lente:"De contacto",
+    //   },
+    //   {
+    //     idtipo_lente:4,
+    //     tipo_lente:"Otro",
+    //   },
+    //   {
+    //     idtipo_lente:5,
+    //     tipo_lente:"Otroo",
+    //   },
+    //   {
+    //     idtipo_lente:6,
+    //     tipo_lente:"Otrooo",
+    //   }
+    // ]
 
     // this.tipoLenteService.getAll()
     // .toPromise()
@@ -191,41 +192,41 @@ export class InventarioComponent implements OnInit {
   }
 
   consultBrands() {
-
-    this.marcas=[
-      {
-        idmarca:1,
-        nombre_marca:"Rayband",
-      },
-      {
-        idmarca:2,
-        nombre_marca:"Dior",
-      },
-      {
-        idmarca:3,
-        nombre_marca:"Vogue",
-      },
-      {
-        idmarca:4,
-        nombre_marca:"Tom Ford",
-      },
-      {
-        idmarca:5,
-        nombre_marca:"Timberland",
-      },
-      {
-        idmarca:6,
-        nombre_marca:"Hugo Boss",
-      },
-      {
-        idmarca:7,
-        nombre_marca:"Fleshlook",
-      },
-      {
-        idmarca:8,
-        nombre_marca:"Acuvue",
-      }
-    ]
+    this.marcaService.getAll().subscribe( (data) => this.marcas = data )
+    // this.marcas=[
+    //   {
+    //     marca:1,
+    //     nombre_marca:"Rayband",
+    //   },
+    //   {
+    //     marca:2,
+    //     nombre_marca:"Dior",
+    //   },
+    //   {
+    //     marca:3,
+    //     nombre_marca:"Vogue",
+    //   },
+    //   {
+    //     marca:4,
+    //     nombre_marca:"Tom Ford",
+    //   },
+    //   {
+    //     marca:5,
+    //     nombre_marca:"Timberland",
+    //   },
+    //   {
+    //     marca:6,
+    //     nombre_marca:"Hugo Boss",
+    //   },
+    //   {
+    //     marca:7,
+    //     nombre_marca:"Fleshlook",
+    //   },
+    //   {
+    //     marca:8,
+    //     nombre_marca:"Acuvue",
+    //   }
+    // ]
 
     // this.marcaService.getAll()
     // .toPromise()
@@ -237,7 +238,7 @@ export class InventarioComponent implements OnInit {
 
     if (this.myForm.valid) { 
 
-    this.producto.idmarca = this.selectedMarca.idmarca;
+    this.producto.marca = this.selectedMarca.marca;
     this.producto.idtipo_lente = this.selectedType.idtipo_lente;
 
       if (this.newProduct) {

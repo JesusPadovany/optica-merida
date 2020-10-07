@@ -36,7 +36,7 @@ export class MarcasComponent implements OnInit {
     this.consultBrands();
 
     this.cols = [
-      { field: 'idmarca', header: 'Id',  width: '10%' },
+      { field: 'marca', header: 'Id',  width: '10%' },
       { field: 'nombre_marca', header: 'Nombre',  width: '80%' },
     ];
   }
@@ -50,40 +50,41 @@ export class MarcasComponent implements OnInit {
 
   consultBrands() {
     
-    this.marcas=[
-      {
-        idmarca:1,
-        nombre_marca:"Rayband",
-      },
-      {
-        idmarca:2,
-        nombre_marca:"Dior",
-      },
-      {
-        idmarca:3,
-        nombre_marca:"Vogue",
-      },
-      {
-        idmarca:4,
-        nombre_marca:"Tom Ford",
-      },
-      {
-        idmarca:5,
-        nombre_marca:"Timberland",
-      },
-      {
-        idmarca:6,
-        nombre_marca:"Hugo Boss",
-      },
-      {
-        idmarca:7,
-        nombre_marca:"Fleshlook",
-      },
-      {
-        idmarca:8,
-        nombre_marca:"Acuvue",
-      }
-    ]
+    this.marcaService.getAll().subscribe( (data) => this.marcas = data )
+    // this.marcas=[
+    //   {
+    //     marca:1,
+    //     nombre_marca:"Rayband",
+    //   },
+    //   {
+    //     marca:2,
+    //     nombre_marca:"Dior",
+    //   },
+    //   {
+    //     marca:3,
+    //     nombre_marca:"Vogue",
+    //   },
+    //   {
+    //     marca:4,
+    //     nombre_marca:"Tom Ford",
+    //   },
+    //   {
+    //     marca:5,
+    //     nombre_marca:"Timberland",
+    //   },
+    //   {
+    //     marca:6,
+    //     nombre_marca:"Hugo Boss",
+    //   },
+    //   {
+    //     marca:7,
+    //     nombre_marca:"Fleshlook",
+    //   },
+    //   {
+    //     marca:8,
+    //     nombre_marca:"Acuvue",
+    //   }
+    // ]
 
     //Petición promise
     // this.marcaService.getAll()
@@ -132,7 +133,7 @@ export class MarcasComponent implements OnInit {
 
   deleteMovementType(marcaActual: Marca){
 
-    this.marcaService.delete(marcaActual.idmarca)
+    this.marcaService.delete(marcaActual.marca)
     .toPromise()
     .then(results => { 
       this.consultBrands();

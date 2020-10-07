@@ -105,13 +105,13 @@
             </div>
             <div class="ui-g-12" >
                 <div class="ui-g-4">
-                    <label for="idmarca">Marca*</label>
+                    <label for="marca">Marca*</label>
                 </div>
                 <div class="ui-g-8">
-                    <p-dropdown  formControlName="idmarca"  optionLabel="nombre_marca" [options]="marcas" [(ngModel)]="selectedMarca" placeholder="Seleccionar" 
-                    name="idmarca"  [filter]="true" [resetFilterOnHide]="true" required></p-dropdown>
-                    <div  *ngIf="myForm.get('idmarca').errors && myForm.get('idmarca').dirty">
-                        <p style="font-size: 10px;" *ngIf="myForm.get('idmarca').hasError('required')">* Campo requerido</p>
+                    <p-dropdown  formControlName="marca"  optionLabel="nombre_marca" [options]="marcas" [(ngModel)]="selectedMarca" placeholder="Seleccionar" 
+                    name="marca"  [filter]="true" [resetFilterOnHide]="true" required></p-dropdown>
+                    <div  *ngIf="myForm.get('marca').errors && myForm.get('marca').dirty">
+                        <p style="font-size: 10px;" *ngIf="myForm.get('marca').hasError('required')">* Campo requerido</p>
                     </div>
                 </div>
             </div>

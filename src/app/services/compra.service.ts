@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Compra } from '../models';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,14 +27,19 @@ export class CompraService {
   }
   
   create(compra: Compra) {
-
-    const url = `${this.url}/`;
+    
+    const url = this.url;
+    console.log(compra)
     console.log(url);
-    return this.http.post(url, compra).pipe(
+
+    return this.http.post<any>(url, compra);
+
+    /*return this.http.post(url, compra).pipe(
       tap(result => {
+        console.log(result)
       }),
       // catchError(this.handleError('Error registrando almacen', []))
-    );
+    );*/
   }
 
 }
