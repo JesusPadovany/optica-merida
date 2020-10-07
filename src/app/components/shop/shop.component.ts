@@ -22,77 +22,6 @@ import {
 export class ShopComponent implements OnInit {
 
   registros:Inventario[] = []
-  
-  // [
-  //   {
-  //     id_: 1,
-  //     idinventario:2,
-  //     idtipo_lente:3,
-  //     marca:4,
-  //     cantidad_total: 10,
-  //     foto: "product-1.jpg",
-  //     descripcion: "Lentes A",
-  //     precio: "10",
-  //     codigo: "12361",
-  //     tipo_lente:"De sol",
-  //     marca:"Rayband"
-  //   },
-  
-  //   {
-  //     id_: 1,
-  //     idinventario:2,
-  //     idtipo_lente:3,
-  //     marca:4,
-  //     cantidad_total: 10,
-  //     foto: "product-2.jpg",
-  //     descripcion: "Lentes B",
-  //     precio: "30",
-  //     codigo: "12361",
-  //     tipo_lente:"De sol",
-  //     marca:"Dior"
-  //   },
-  //   {
-  //     id_: 1,
-  //     idinventario:2,
-  //     idtipo_lente:3,
-  //     marca:4,
-  //     cantidad_total: 10,
-  //     foto: "product-3.jpg",
-  //     descripcion: "Lentes C",
-  //     precio: "40",
-  //     codigo: "12361",
-  //     tipo_lente:"Formulados",
-  //     marca:"Vogue"
-  //   },
-  //   {
-  //     id_: 1,
-  //     idinventario:2,
-  //     idtipo_lente:3,
-  //     marca:4,
-  //     cantidad_total: 10,
-  //     foto: "product-4.jpg",
-  //     descripcion: "Lentes D",
-  //     precio: "50",
-  //     codigo: "12361",
-  //     tipo_lente:"Formulados",
-  //     marca:"Tom Ford"
-  //   },
-  //   {
-  //     id_: 1,
-  //     idinventario:2,
-  //     idtipo_lente:3,
-  //     marca:4,
-  //     cantidad_total: 10,
-  //     foto: "product-5.jpg",
-  //     descripcion: "Lentes E",
-  //     precio: "40",
-  //     codigo: "12361",
-  //     tipo_lente:"De contacto",
-  //     marca:"Timberland"
-  //   },
-    
-  // ]
-
   product: Inventario[];
   brands: Marca[];
   total:any;
@@ -124,7 +53,8 @@ export class ShopComponent implements OnInit {
   getAllStock() {
 
     this.inventarioService.getAll().subscribe( (data) => {
-      this.registros = this.product = data
+      this.registros = data
+      this.product= data
       this.total = data.length
     } )
     // this.product =  [
@@ -197,95 +127,18 @@ export class ShopComponent implements OnInit {
       
     // ]
 
-    // this.total= this.product.length;
-
-    //Peticion promise
-    // this.inventarioService.getAll()
-    // .toPromise()
-    // .then(results => { 
-    //   this.product= results;
-    // })
-    // .catch( err => { 
-    //   console.log(err);
-    // });
   }
 
   getAllBrands() {
   
     this.marcaService.getAll().subscribe( (data) => this.brands = data )
-    // this.brands=[
-    //   {
-    //     id_:1,
-    //     nombre_marca:"Rayband",
-    //   },
-    //   {
-    //     id_:2,
-    //     nombre_marca:"Dior",
-    //   },
-    //   {
-    //     id_:3,
-    //     nombre_marca:"Vogue",
-    //   },
-    //   {
-    //     id_:4,
-    //     nombre_marca:"Tom Ford",
-    //   },
-    //   {
-    //     id_:5,
-    //     nombre_marca:"Timberland",
-    //   },
-    //   {
-    //     id_:6,
-    //     nombre_marca:"Hugo Boss",
-    //   },
-    //   {
-    //     id_:7,
-    //     nombre_marca:"Fleshlook",
-    //   },
-    //   {
-    //     id_:8,
-    //     nombre_marca:"Acuvue",
-    //   }
-    // ]
-
-    //Peticion promise
-    // this.marcaService.getAll()
-    // .toPromise()
-    // .then(results => { 
-    //   this.brands= results;
-    // })
-    // .catch( err => { 
-    //   console.log(err);
-    // });
+   
   }
 
   getAllTypeOfLens() {
 
     this.tipoLenteService.getAll().subscribe( (data) => this.types = data )
-    // this.types = [
-    //   {
-    //     id_:1,
-    //     tipo_lente:"De sol",
-    //   },
-    //   {
-    //     id_:1,
-    //     tipo_lente:"Formulados",
-    //   },
-    //   {
-    //     id_:1,
-    //     tipo_lente:"De contacto",
-    //   }
-    // ]
-
-    //Peticion promise
-    // this.tipoLenteService.getAll()
-    // .toPromise()
-    // .then(results => { 
-    //   this.types= results;
-    // })
-    // .catch( err => { 
-    //   console.log(err);
-    // });
+    
   }
 
 
@@ -300,7 +153,7 @@ export class ShopComponent implements OnInit {
 
   filterByBrand(brand: any){
     
-    let result = this.registros.filter(x => x.marca == brand);
+    let result = this.registros.filter(x => x.marca.nombre_marca == brand);
     this.product = result;
     this.total= this.product.length;
     this.title= brand;
@@ -310,7 +163,9 @@ export class ShopComponent implements OnInit {
  
   filterByType(tipo: any){
     
-    let result = this.registros.filter(x => x.tipo_lente == tipo);
+    console.log(this.registros);
+
+    let result = this.registros.filter(x => x.tipo_lente.tipo_lente == tipo);
     this.product = result;
     this.total= this.product.length;
     this.title= tipo;
