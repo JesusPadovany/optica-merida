@@ -76,7 +76,10 @@ export class InventarioComponent implements OnInit {
   }
 
   consultProducts() {
+
     this.inventarioService.getAll().subscribe( (data) => this.productos = data )
+
+    
     // this.productos =  [
     //   {
     //     id_: 1,
@@ -236,12 +239,12 @@ export class InventarioComponent implements OnInit {
 
   save(){
 
-    if (true) { 
-//      if (this.myForm.valid) { 
+   
+    if (this.myForm.valid) { 
 
-    this.producto.marca = this.selectedMarca.id;
-    this.producto.tipo_lente = this.selectedType.id;
-    this.producto.foto = "product-4.jpg";
+      this.producto.marca = this.selectedMarca.id;
+      this.producto.tipo_lente = this.selectedType.id;
+
       if (this.newProduct) {
 
         this.inventarioService.create(this.producto)
@@ -301,6 +304,12 @@ export class InventarioComponent implements OnInit {
   }
 
   edit(productoActual: Inventario){
+    
+    this.selectedMarca.id = productoActual.marca.id;
+    this.selectedMarca.nombre_marca = productoActual.marca.nombre_marca;
+    this.selectedType.id = productoActual.tipo_lente.id;
+    this.selectedType.tipo_lente = productoActual.tipo_lente.tipo_lente;
+
     this.newProduct = false;
     this.producto = this.clone(productoActual);
     this.displayDialog   = true;
@@ -308,6 +317,8 @@ export class InventarioComponent implements OnInit {
   }
 
   showDialogToAdd(){
+    this.selectedMarca = {};
+    this.selectedType = {};
     this.newProduct = true;
     this.producto  = {};
     this.tituloDialogo   = "Nuevo producto";
