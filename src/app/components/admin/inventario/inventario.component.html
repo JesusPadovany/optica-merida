@@ -82,6 +82,17 @@
             </div>
             <div class="ui-g-12">
                 <div class="ui-g-4">
+                    <label for="foto">Foto*</label>
+                </div>
+                <div class="ui-g-8">
+                    <input class="form-control" formControlName="foto" pInputText type="text" id="foto" [(ngModel)]="producto.foto" class="ng-dirty ng-invalid"/>
+                    <div  *ngIf="myForm.get('foto').errors && myForm.get('foto').dirty">
+                        <p style="font-size: 10px;" *ngIf="myForm.get('foto').hasError('required')">* Campo requerido</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
                     <label for="codigo">Código*</label>
                 </div>
                 <div class="ui-g-8">

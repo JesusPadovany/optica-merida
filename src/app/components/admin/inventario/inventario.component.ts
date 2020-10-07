@@ -76,6 +76,7 @@ export class InventarioComponent implements OnInit {
   }
 
   consultProducts() {
+
     this.inventarioService.getAll().subscribe( (data) => this.productos = data )
     // this.productos =  [
     //   {
@@ -236,12 +237,15 @@ export class InventarioComponent implements OnInit {
 
   save(){
 
-    if (true) { 
-//      if (this.myForm.valid) { 
+   
+     if (this.myForm.valid) { 
 
-    this.producto.marca = this.selectedMarca.id;
-    this.producto.tipo_lente = this.selectedType.id;
-    this.producto.foto = "product-4.jpg";
+      console.log("Enviando");
+      console.log(this.producto);
+
+      this.producto.marca = this.selectedMarca.id;
+      this.producto.tipo_lente = this.selectedType.id;
+
       if (this.newProduct) {
 
         this.inventarioService.create(this.producto)
