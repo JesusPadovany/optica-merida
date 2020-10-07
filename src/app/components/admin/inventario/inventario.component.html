@@ -156,7 +156,8 @@
 <p-toast [style]="{marginTop: '70px'}" position="top-right" key="tc"></p-toast>
 
 <!-- Diálogo de Confirmación -->
-<p-confirmDialog #cd header="Confirmación" [baseZIndex]="10000" icon="pi pi-exclamation-triangle"  [closable]="false">
+<p-confirmDialog #cd header="Confirmación" [baseZIndex]="10000" icon="pi pi-exclamation-triangle"  
+[closable]="false">
     <p-footer>
         <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
         <button type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
