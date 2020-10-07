@@ -1,9 +1,9 @@
 
 export interface TipoLente {
-    id_?,
+    id?,
     type?,
 
     //otro
-    idtipo_lente?,
+    //idtipo_lente?,
     tipo_lente?,
 }

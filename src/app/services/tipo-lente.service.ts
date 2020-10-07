@@ -38,7 +38,7 @@ export class TipoLenteService {
 
   update(TipoLente: TipoLente) {
 
-    const url = `${this.url}`;
+    const url = `${this.url}/${TipoLente['id']}`;
 
     return this.http.put(url, TipoLente).pipe(
       tap(result => {

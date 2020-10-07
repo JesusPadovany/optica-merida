@@ -65,7 +65,7 @@ export class InventarioComponent implements OnInit {
   createForm(){
 
     this.myForm = this.fb.group({
-      idtipo_lente: ['', [Validators.required]],
+      tipo_lente: ['', [Validators.required]],
       marca: ['', [Validators.required]],
       cantidad_total: ['', [Validators.required]],
       descripcion: ['', [Validators.required,Validators.minLength(1), Validators.maxLength (20)]],
@@ -81,7 +81,7 @@ export class InventarioComponent implements OnInit {
     //   {
     //     id_: 1,
     //     idinventario:2,
-    //     idtipo_lente:3,
+    //     tipo_lente:3,
     //     marca:4,
     //     cantidad_total: 10,
     //     foto: "product-1.jpg",
@@ -95,7 +95,7 @@ export class InventarioComponent implements OnInit {
     //   {
     //     id_: 1,
     //     idinventario:2,
-    //     idtipo_lente:3,
+    //     tipo_lente:3,
     //     marca:4,
     //     cantidad_total: 10,
     //     foto: "product-2.jpg",
@@ -108,7 +108,7 @@ export class InventarioComponent implements OnInit {
     //   {
     //     id_: 1,
     //     idinventario:2,
-    //     idtipo_lente:3,
+    //     tipo_lente:3,
     //     marca:4,
     //     cantidad_total: 10,
     //     foto: "product-3.jpg",
@@ -121,7 +121,7 @@ export class InventarioComponent implements OnInit {
     //   {
     //     id_: 1,
     //     idinventario:2,
-    //     idtipo_lente:3,
+    //     tipo_lente:3,
     //     marca:4,
     //     cantidad_total: 10,
     //     foto: "product-4.jpg",
@@ -134,7 +134,7 @@ export class InventarioComponent implements OnInit {
     //   {
     //     id_: 1,
     //     idinventario:2,
-    //     idtipo_lente:3,
+    //     tipo_lente:3,
     //     marca:4,
     //     cantidad_total: 10,
     //     foto: "product-5.jpg",
@@ -160,27 +160,27 @@ export class InventarioComponent implements OnInit {
     this.tipoLenteService.getAll().subscribe( (data) => this.tipos = data )
     // this.tipos= [
     //   {
-    //     idtipo_lente:1,
+    //     tipo_lente:1,
     //     tipo_lente:"De sol",
     //   },
     //   {
-    //     idtipo_lente:2,
+    //     tipo_lente:2,
     //     tipo_lente:"Formulados",
     //   },
     //   {
-    //     idtipo_lente:3,
+    //     tipo_lente:3,
     //     tipo_lente:"De contacto",
     //   },
     //   {
-    //     idtipo_lente:4,
+    //     tipo_lente:4,
     //     tipo_lente:"Otro",
     //   },
     //   {
-    //     idtipo_lente:5,
+    //     tipo_lente:5,
     //     tipo_lente:"Otroo",
     //   },
     //   {
-    //     idtipo_lente:6,
+    //     tipo_lente:6,
     //     tipo_lente:"Otrooo",
     //   }
     // ]
@@ -236,11 +236,12 @@ export class InventarioComponent implements OnInit {
 
   save(){
 
-    if (this.myForm.valid) { 
+    if (true) { 
+//      if (this.myForm.valid) { 
 
-    this.producto.marca = this.selectedMarca.marca;
-    this.producto.idtipo_lente = this.selectedType.idtipo_lente;
-
+    this.producto.marca = this.selectedMarca.id;
+    this.producto.tipo_lente = this.selectedType.id;
+    this.producto.foto = "product-4.jpg";
       if (this.newProduct) {
 
         this.inventarioService.create(this.producto)
@@ -276,7 +277,7 @@ export class InventarioComponent implements OnInit {
 
   deleteMovementType(productoActual: Inventario){
 
-    this.inventarioService.delete(productoActual.idinventario)
+    this.inventarioService.delete(productoActual.id)
     .toPromise()
     .then(results => { 
       this.consultProducts();

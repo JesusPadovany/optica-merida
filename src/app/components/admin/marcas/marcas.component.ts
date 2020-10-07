@@ -36,7 +36,7 @@ export class MarcasComponent implements OnInit {
     this.consultBrands();
 
     this.cols = [
-      { field: 'marca', header: 'Id',  width: '10%' },
+      { field: 'id', header: 'Id',  width: '10%' },
       { field: 'nombre_marca', header: 'Nombre',  width: '80%' },
     ];
   }
@@ -132,8 +132,8 @@ export class MarcasComponent implements OnInit {
   }
 
   deleteMovementType(marcaActual: Marca){
-
-    this.marcaService.delete(marcaActual.marca)
+    console.log("marcaActual " + marcaActual.id)
+    this.marcaService.delete(marcaActual.id)
     .toPromise()
     .then(results => { 
       this.consultBrands();

@@ -36,7 +36,7 @@ export class TipoLentesComponent implements OnInit {
     this.consultType();
 
     this.cols = [
-      { field: 'idtipo_lente', header: 'Id',  width: '10%' },
+      { field: 'id', header: 'Id',  width: '10%' },
       { field: 'tipo_lente', header: 'Tipo',  width: '80%' },
     ];
   }
@@ -50,32 +50,34 @@ export class TipoLentesComponent implements OnInit {
 
   consultType() {
     
-    this.tipoLentes= [
-      {
-        idtipo_lente:1,
-        tipo_lente:"De sol",
-      },
-      {
-        idtipo_lente:2,
-        tipo_lente:"Formulados",
-      },
-      {
-        idtipo_lente:3,
-        tipo_lente:"De contacto",
-      },
-      {
-        idtipo_lente:4,
-        tipo_lente:"Otro",
-      },
-      {
-        idtipo_lente:5,
-        tipo_lente:"Otroo",
-      },
-      {
-        idtipo_lente:6,
-        tipo_lente:"Otrooo",
-      }
-    ]
+    this.tipoLenteService.getAll().subscribe( (data) => this.tipoLentes = data )
+
+    // this.tipoLentes= [
+    //   {
+    //     idtipo_lente:1,
+    //     tipo_lente:"De sol",
+    //   },
+    //   {
+    //     idtipo_lente:2,
+    //     tipo_lente:"Formulados",
+    //   },
+    //   {
+    //     idtipo_lente:3,
+    //     tipo_lente:"De contacto",
+    //   },
+    //   {
+    //     idtipo_lente:4,
+    //     tipo_lente:"Otro",
+    //   },
+    //   {
+    //     idtipo_lente:5,
+    //     tipo_lente:"Otroo",
+    //   },
+    //   {
+    //     idtipo_lente:6,
+    //     tipo_lente:"Otrooo",
+    //   }
+    // ]
 
     //Petición promise
     // this.tipoLenteService.getAll()
@@ -123,7 +125,7 @@ export class TipoLentesComponent implements OnInit {
 
   deleteMovementType(tipoActual: TipoLente){
 
-    this.tipoLenteService.delete(tipoActual.idtipo_lente)
+    this.tipoLenteService.delete(tipoActual.id)
     .toPromise()
     .then(results => { 
       this.consultType();

@@ -24,7 +24,7 @@
     <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr [pEditableRow]>
             <td [ngStyle]="{'width': '10%'}"  class="text-center">
-                {{ rowData.idinventario }}
+                {{ rowData.id }}
             </td>                    
             <td [ngStyle]="{'width': '10%'}" class="text-center">
                 {{ rowData.codigo }}
@@ -33,10 +33,10 @@
                 {{ rowData.descripcion }}
             </td>                    
             <td [ngStyle]="{'width': '20%'}" class="text-center">
-                {{ rowData.tipo_lente }}
+                {{ rowData.tipo_lente.tipo_lente }}
             </td>
             <td [ngStyle]="{'width': '20%'}"  class="text-center">
-                {{ rowData.marca }}
+                {{ rowData.marca.nombre_marca }}
             </td>                    
             <td [ngStyle]="{'width': '10%'}" class="text-center">
                 {{ rowData.cantidad_total }}
@@ -93,13 +93,13 @@
             </div>
             <div class="ui-g-12" >
                 <div class="ui-g-4">
-                    <label for="idtipo_lente">Tipo de lente*</label>
+                    <label for="tipo_lente">Tipo de lente*</label>
                 </div>
                 <div class="ui-g-8">
-                    <p-dropdown  formControlName="idtipo_lente"  optionLabel="tipo_lente" [options]="tipos" [(ngModel)]="selectedType" placeholder="Seleccionar" 
-                    name="idtipo_lente"  [filter]="true" [resetFilterOnHide]="true" required></p-dropdown>
-                    <div  *ngIf="myForm.get('idtipo_lente').errors && myForm.get('idtipo_lente').dirty">
-                        <p style="font-size: 10px;" *ngIf="myForm.get('idtipo_lente').hasError('required')">* Campo requerido</p>
+                    <p-dropdown  formControlName="tipo_lente"  optionLabel="tipo_lente" [options]="tipos" [(ngModel)]="selectedType" placeholder="Seleccionar" 
+                    name="tipo_lente"  [filter]="true" [resetFilterOnHide]="true" required></p-dropdown>
+                    <div  *ngIf="myForm.get('tipo_lente').errors && myForm.get('tipo_lente').dirty">
+                        <p style="font-size: 10px;" *ngIf="myForm.get('tipo_lente').hasError('required')">* Campo requerido</p>
                     </div>
                 </div>
             </div>
@@ -145,7 +145,8 @@
         </div>
         <hr><p-footer>
             <div class="ui-dialog-buttonpane ui-helper-clearfix" style="text-align: right;">
-                <button type="button submit" pButton icon="fa fa-check" label="Guardar"  [disabled]="!myForm.valid" ></button>
+                <button type="button submit" pButton icon="fa fa-check" label="Guardar"  ></button>
+                <!-- AL BOTON DE GUARDAR LE QUITE EL [disabled]="!myForm.valid" -->
                 <button type="button" pButton icon="fa fa-times" (click)="close()" label="Cerrar" ></button>
             </div>
         </p-footer>

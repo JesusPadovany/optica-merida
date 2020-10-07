@@ -38,8 +38,8 @@ export class MarcaService {
   }
 
   update(Marca: Marca) {
-
-    const url = `${this.url}`;
+    console.log(Marca);
+    const url = `${this.url}/${Marca['id']}`;
 
     return this.http.put(url, Marca).pipe(
       tap(result => {

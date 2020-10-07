@@ -327,7 +327,7 @@ export class ShopComponent implements OnInit {
 
   
   detail(product: Inventario){
-    this.router.navigate(['product-detail', product.id_]);
+    this.router.navigate(['product-detail', product.id]);
   }
 
   

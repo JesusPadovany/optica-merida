@@ -37,7 +37,7 @@ export class InventarioService {
 
   update(Inventario:Inventario) {
 
-    const url = `${this.url}`;
+    const url = `${this.url}/${Inventario['id']}`;
 
     return this.http.put(url,Inventario).pipe(
       tap(result => {
