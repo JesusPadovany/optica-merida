@@ -21,75 +21,77 @@ import {
 })
 export class ShopComponent implements OnInit {
 
-  registros:Inventario[] = [
-    {
-      id_: 1,
-      idinventario:2,
-      idtipo_lente:3,
-      idmarca:4,
-      cantidad_total: 10,
-      foto: "product-1.jpg",
-      descripcion: "Lentes A",
-      precio: "10",
-      codigo: "12361",
-      tipo_lente:"De sol",
-      marca:"Rayband"
-    },
+  registros:Inventario[] = []
   
-    {
-      id_: 1,
-      idinventario:2,
-      idtipo_lente:3,
-      idmarca:4,
-      cantidad_total: 10,
-      foto: "product-2.jpg",
-      descripcion: "Lentes B",
-      precio: "30",
-      codigo: "12361",
-      tipo_lente:"De sol",
-      marca:"Dior"
-    },
-    {
-      id_: 1,
-      idinventario:2,
-      idtipo_lente:3,
-      idmarca:4,
-      cantidad_total: 10,
-      foto: "product-3.jpg",
-      descripcion: "Lentes C",
-      precio: "40",
-      codigo: "12361",
-      tipo_lente:"Formulados",
-      marca:"Vogue"
-    },
-    {
-      id_: 1,
-      idinventario:2,
-      idtipo_lente:3,
-      idmarca:4,
-      cantidad_total: 10,
-      foto: "product-4.jpg",
-      descripcion: "Lentes D",
-      precio: "50",
-      codigo: "12361",
-      tipo_lente:"Formulados",
-      marca:"Tom Ford"
-    },
-    {
-      id_: 1,
-      idinventario:2,
-      idtipo_lente:3,
-      idmarca:4,
-      cantidad_total: 10,
-      foto: "product-5.jpg",
-      descripcion: "Lentes E",
-      precio: "40",
-      codigo: "12361",
-      tipo_lente:"De contacto",
-      marca:"Timberland"
-    },
+  // [
+  //   {
+  //     id_: 1,
+  //     idinventario:2,
+  //     idtipo_lente:3,
+  //     idmarca:4,
+  //     cantidad_total: 10,
+  //     foto: "product-1.jpg",
+  //     descripcion: "Lentes A",
+  //     precio: "10",
+  //     codigo: "12361",
+  //     tipo_lente:"De sol",
+  //     marca:"Rayband"
+  //   },
+  
+  //   {
+  //     id_: 1,
+  //     idinventario:2,
+  //     idtipo_lente:3,
+  //     idmarca:4,
+  //     cantidad_total: 10,
+  //     foto: "product-2.jpg",
+  //     descripcion: "Lentes B",
+  //     precio: "30",
+  //     codigo: "12361",
+  //     tipo_lente:"De sol",
+  //     marca:"Dior"
+  //   },
+  //   {
+  //     id_: 1,
+  //     idinventario:2,
+  //     idtipo_lente:3,
+  //     idmarca:4,
+  //     cantidad_total: 10,
+  //     foto: "product-3.jpg",
+  //     descripcion: "Lentes C",
+  //     precio: "40",
+  //     codigo: "12361",
+  //     tipo_lente:"Formulados",
+  //     marca:"Vogue"
+  //   },
+  //   {
+  //     id_: 1,
+  //     idinventario:2,
+  //     idtipo_lente:3,
+  //     idmarca:4,
+  //     cantidad_total: 10,
+  //     foto: "product-4.jpg",
+  //     descripcion: "Lentes D",
+  //     precio: "50",
+  //     codigo: "12361",
+  //     tipo_lente:"Formulados",
+  //     marca:"Tom Ford"
+  //   },
+  //   {
+  //     id_: 1,
+  //     idinventario:2,
+  //     idtipo_lente:3,
+  //     idmarca:4,
+  //     cantidad_total: 10,
+  //     foto: "product-5.jpg",
+  //     descripcion: "Lentes E",
+  //     precio: "40",
+  //     codigo: "12361",
+  //     tipo_lente:"De contacto",
+  //     marca:"Timberland"
+  //   },
     
-  ]
+  // ]
 
   product: Inventario[];
   brands: Marca[];
@@ -121,77 +123,81 @@ export class ShopComponent implements OnInit {
 
   getAllStock() {
 
-    this.product =  [
-      {
-        id_: 1,
-        idinventario:2,
-        idtipo_lente:3,
-        idmarca:4,
-        cantidad_total: 10,
-        foto: "product-1.jpg",
-        descripcion: "Lentes A",
-        precio: "10",
-        codigo: "12361",
-        tipo_lente:"De sol",
-        marca:"Rayband"
-      },
+    this.inventarioService.getAll().subscribe( (data) => {
+      this.registros = this.product = data
+      this.total = data.length
+    } )
+    // this.product =  [
+    //   {
+    //     id_: 1,
+    //     idinventario:2,
+    //     idtipo_lente:3,
+    //     idmarca:4,
+    //     cantidad_total: 10,
+    //     foto: "product-1.jpg",
+    //     descripcion: "Lentes A",
+    //     precio: "10",
+    //     codigo: "12361",
+    //     tipo_lente:"De sol",
+    //     marca:"Rayband"
+    //   },
     
-      {
-        id_: 1,
-        idinventario:2,
-        idtipo_lente:3,
-        idmarca:4,
-        cantidad_total: 10,
-        foto: "product-2.jpg",
-        descripcion: "Lentes B",
-        precio: "30",
-        codigo: "12361",
-        tipo_lente:"De sol",
-        marca:"Dior"
-      },
-      {
-        id_: 1,
-        idinventario:2,
-        idtipo_lente:3,
-        idmarca:4,
-        cantidad_total: 10,
-        foto: "product-3.jpg",
-        descripcion: "Lentes C",
-        precio: "40",
-        codigo: "12361",
-        tipo_lente:"Formulados",
-        marca:"Vogue"
-      },
-      {
-        id_: 1,
-        idinventario:2,
-        idtipo_lente:3,
-        idmarca:4,
-        cantidad_total: 10,
-        foto: "product-4.jpg",
-        descripcion: "Lentes D",
-        precio: "50",
-        codigo: "12361",
-        tipo_lente:"Formulados",
-        marca:"Tom Ford"
-      },
-      {
-        id_: 1,
-        idinventario:2,
-        idtipo_lente:3,
-        idmarca:4,
-        cantidad_total: 10,
-        foto: "product-5.jpg",
-        descripcion: "Lentes E",
-        precio: "40",
-        codigo: "12361",
-        tipo_lente:"De contacto",
-        marca:"Timberland"
-      },
+    //   {
+    //     id_: 1,
+    //     idinventario:2,
+    //     idtipo_lente:3,
+    //     idmarca:4,
+    //     cantidad_total: 10,
+    //     foto: "product-2.jpg",
+    //     descripcion: "Lentes B",
+    //     precio: "30",
+    //     codigo: "12361",
+    //     tipo_lente:"De sol",
+    //     marca:"Dior"
+    //   },
+    //   {
+    //     id_: 1,
+    //     idinventario:2,
+    //     idtipo_lente:3,
+    //     idmarca:4,
+    //     cantidad_total: 10,
+    //     foto: "product-3.jpg",
+    //     descripcion: "Lentes C",
+    //     precio: "40",
+    //     codigo: "12361",
+    //     tipo_lente:"Formulados",
+    //     marca:"Vogue"
+    //   },
+    //   {
+    //     id_: 1,
+    //     idinventario:2,
+    //     idtipo_lente:3,
+    //     idmarca:4,
+    //     cantidad_total: 10,
+    //     foto: "product-4.jpg",
+    //     descripcion: "Lentes D",
+    //     precio: "50",
+    //     codigo: "12361",
+    //     tipo_lente:"Formulados",
+    //     marca:"Tom Ford"
+    //   },
+    //   {
+    //     id_: 1,
+    //     idinventario:2,
+    //     idtipo_lente:3,
+    //     idmarca:4,
+    //     cantidad_total: 10,
+    //     foto: "product-5.jpg",
+    //     descripcion: "Lentes E",
+    //     precio: "40",
+    //     codigo: "12361",
+    //     tipo_lente:"De contacto",
+    //     marca:"Timberland"
+    //   },
       
-    ]
+    // ]
 
-    this.total= this.product.length;
+    // this.total= this.product.length;
 
     //Peticion promise
     // this.inventarioService.getAll()
@@ -206,40 +212,41 @@ export class ShopComponent implements OnInit {
 
   getAllBrands() {
   
-    this.brands=[
-      {
-        id_:1,
-        nombre_marca:"Rayband",
-      },
-      {
-        id_:2,
-        nombre_marca:"Dior",
-      },
-      {
-        id_:3,
-        nombre_marca:"Vogue",
-      },
-      {
-        id_:4,
-        nombre_marca:"Tom Ford",
-      },
-      {
-        id_:5,
-        nombre_marca:"Timberland",
-      },
-      {
-        id_:6,
-        nombre_marca:"Hugo Boss",
-      },
-      {
-        id_:7,
-        nombre_marca:"Fleshlook",
-      },
-      {
-        id_:8,
-        nombre_marca:"Acuvue",
-      }
-    ]
+    this.marcaService.getAll().subscribe( (data) => this.brands = data )
+    // this.brands=[
+    //   {
+    //     id_:1,
+    //     nombre_marca:"Rayband",
+    //   },
+    //   {
+    //     id_:2,
+    //     nombre_marca:"Dior",
+    //   },
+    //   {
+    //     id_:3,
+    //     nombre_marca:"Vogue",
+    //   },
+    //   {
+    //     id_:4,
+    //     nombre_marca:"Tom Ford",
+    //   },
+    //   {
+    //     id_:5,
+    //     nombre_marca:"Timberland",
+    //   },
+    //   {
+    //     id_:6,
+    //     nombre_marca:"Hugo Boss",
+    //   },
+    //   {
+    //     id_:7,
+    //     nombre_marca:"Fleshlook",
+    //   },
+    //   {
+    //     id_:8,
+    //     nombre_marca:"Acuvue",
+    //   }
+    // ]
 
     //Peticion promise
     // this.marcaService.getAll()
@@ -254,20 +261,21 @@ export class ShopComponent implements OnInit {
 
   getAllTypeOfLens() {
 
-    this.types = [
-      {
-        id_:1,
-        tipo_lente:"De sol",
-      },
-      {
-        id_:1,
-        tipo_lente:"Formulados",
-      },
-      {
-        id_:1,
-        tipo_lente:"De contacto",
-      }
-    ]
+    this.tipoLenteService.getAll().subscribe( (data) => this.types = data )
+    // this.types = [
+    //   {
+    //     id_:1,
+    //     tipo_lente:"De sol",
+    //   },
+    //   {
+    //     id_:1,
+    //     tipo_lente:"Formulados",
+    //   },
+    //   {
+    //     id_:1,
+    //     tipo_lente:"De contacto",
+    //   }
+    // ]
 
     //Peticion promise
     // this.tipoLenteService.getAll()

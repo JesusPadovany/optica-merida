@@ -13,7 +13,8 @@ export class TipoLenteService {
   private url: string;
 
   constructor(private http: HttpClient) { 
-    this.url = environment.apiUrl + 'tipo-lente';
+    // this.url = environment.apiUrl + 'tipo-lente';
+    this.url = environment.apiUrl + 'lente_tipos';
   }
 
   getAll(): Observable<TipoLente[]> {

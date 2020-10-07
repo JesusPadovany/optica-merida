@@ -14,7 +14,8 @@ export class MarcaService {
   private url: string;
 
   constructor(private http: HttpClient) { 
-    this.url = environment.apiUrl + 'marca';
+    // this.url = environment.apiUrl + 'marca';
+    this.url = environment.apiUrl + 'marcas';
   }
 
   getAll(): Observable<Marca[]> {

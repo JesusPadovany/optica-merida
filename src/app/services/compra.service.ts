@@ -13,7 +13,8 @@ export class CompraService {
   private url: string;
 
   constructor(private http: HttpClient) { 
-    this.url = environment.apiUrl + 'compra';
+    // this.url = environment.apiUrl + 'compra';
+    this.url = environment.apiUrl + 'compras';
   }
 
   getAll(): Observable<Compra[]> {

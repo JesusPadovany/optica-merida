@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost/optica-back/public/api/',
+  // apiUrl: 'http://localhost/optica-back/public/api/',
+  apiUrl: 'http://localhost:8080/api/',
 };
 
 /*

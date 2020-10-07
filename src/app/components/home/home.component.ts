@@ -55,64 +55,66 @@ export class HomeComponent implements OnInit {
 
   getSomeProducts() {
 
-    this.products = [
-      {
-        id_: 1,
-        idinventario: 1,
-        idtipo_lente: 1,
-        idmarca:1,
-        descripcion: "Lentes A",
-        cantidad_total: "40",
-        codigo: "12361",
-        foto: "product-1.jpg",
-        precio: "200",
-      },
-      {
-        id_: 1,
-        idinventario: 1,
-        idtipo_lente: 1,
-        idmarca:1,
-        descripcion: "Lentes B",
-        cantidad_total: "40",
-        codigo: "12361",
-        foto: "product-2.jpg",
-        precio: "200",
-      },
-      {
-        id_: 1,
-        idinventario: 1,
-        idtipo_lente: 1,
-        idmarca:1,
-        descripcion: "Lentes C",
-        cantidad_total: "40",
-        codigo: "12361",
-        foto: "product-3.jpg",
-        precio: "200",
-      },
-      {
-        id_: 1,
-        idinventario: 1,
-        idtipo_lente: 1,
-        idmarca:1,
-        descripcion: "Lentes D",
-        cantidad_total: "40",
-        codigo: "12361",
-        foto: "product-4.jpg",
-        precio: "200",
-      },
-      {
-        id_: 1,
-        idinventario: 1,
-        idtipo_lente: 1,
-        idmarca:1,
-        descripcion: "Lentes E",
-        cantidad_total: "40",
-        codigo: "12361",
-        foto: "product-5.jpg",
-        precio: "200",
-      },
+    this.inventarioService.getAll().subscribe( (data) => this.products = data )
+
+    // this.products = [
+    //   {
+    //     id_: 1,
+    //     idinventario: 1,
+    //     idtipo_lente: 1,
+    //     idmarca:1,
+    //     descripcion: "Lentes A",
+    //     cantidad_total: "40",
+    //     codigo: "12361",
+    //     foto: "product-1.jpg",
+    //     precio: "200",
+    //   },
+    //   {
+    //     id_: 1,
+    //     idinventario: 1,
+    //     idtipo_lente: 1,
+    //     idmarca:1,
+    //     descripcion: "Lentes B",
+    //     cantidad_total: "40",
+    //     codigo: "12361",
+    //     foto: "product-2.jpg",
+    //     precio: "200",
+    //   },
+    //   {
+    //     id_: 1,
+    //     idinventario: 1,
+    //     idtipo_lente: 1,
+    //     idmarca:1,
+    //     descripcion: "Lentes C",
+    //     cantidad_total: "40",
+    //     codigo: "12361",
+    //     foto: "product-3.jpg",
+    //     precio: "200",
+    //   },
+    //   {
+    //     id_: 1,
+    //     idinventario: 1,
+    //     idtipo_lente: 1,
+    //     idmarca:1,
+    //     descripcion: "Lentes D",
+    //     cantidad_total: "40",
+    //     codigo: "12361",
+    //     foto: "product-4.jpg",
+    //     precio: "200",
+    //   },
+    //   {
+    //     id_: 1,
+    //     idinventario: 1,
+    //     idtipo_lente: 1,
+    //     idmarca:1,
+    //     descripcion: "Lentes E",
+    //     cantidad_total: "40",
+    //     codigo: "12361",
+    //     foto: "product-5.jpg",
+    //     precio: "200",
+    //   },
       
-    ]
+    // ]
 
     //Petición promise
     //  this.inventarioService.getAll()
