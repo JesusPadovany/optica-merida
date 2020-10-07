@@ -78,6 +78,8 @@ export class InventarioComponent implements OnInit {
   consultProducts() {
 
     this.inventarioService.getAll().subscribe( (data) => this.productos = data )
+
+    
     // this.productos =  [
     //   {
     //     id_: 1,
@@ -238,10 +240,7 @@ export class InventarioComponent implements OnInit {
   save(){
 
    
-     if (this.myForm.valid) { 
-
-      console.log("Enviando");
-      console.log(this.producto);
+    if (this.myForm.valid) { 
 
       this.producto.marca = this.selectedMarca.id;
       this.producto.tipo_lente = this.selectedType.id;
@@ -305,6 +304,12 @@ export class InventarioComponent implements OnInit {
   }
 
   edit(productoActual: Inventario){
+    
+    this.selectedMarca.id = productoActual.marca.id;
+    this.selectedMarca.nombre_marca = productoActual.marca.nombre_marca;
+    this.selectedType.id = productoActual.tipo_lente.id;
+    this.selectedType.tipo_lente = productoActual.tipo_lente.tipo_lente;
+
     this.newProduct = false;
     this.producto = this.clone(productoActual);
     this.displayDialog   = true;
@@ -312,6 +317,8 @@ export class InventarioComponent implements OnInit {
   }
 
   showDialogToAdd(){
+    this.selectedMarca = {};
+    this.selectedType = {};
     this.newProduct = true;
     this.producto  = {};
     this.tituloDialogo   = "Nuevo producto";
