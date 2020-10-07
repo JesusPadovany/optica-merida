@@ -12,7 +12,11 @@ import {ButtonModule} from 'primeng/button';
 import {DataViewModule} from 'primeng/dataview';
 import {PanelModule} from 'primeng/panel';
 import { ToastModule } from 'primeng/toast';
-
+import { TableModule } from 'primeng/table';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { MenubarModule } from 'primeng/menubar';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
 
 // Directivas
 import { UppercaseDirective } from './directives/uppercase.directive';
@@ -34,6 +38,9 @@ import { AboutComponent } from './components/about/about.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { CarComponent } from './components/car/car.component';
+import { MarcasComponent } from './components/admin/marcas/marcas.component';
+import { TipoLentesComponent } from './components/admin/tipo-lentes/tipo-lentes.component';
+import { InventarioComponent } from './components/admin/inventario/inventario.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +60,9 @@ import { CarComponent } from './components/car/car.component';
     ShopComponent,
     ProductDetailComponent,
     CarComponent,
+    MarcasComponent,
+    TipoLentesComponent,
+    InventarioComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +75,12 @@ import { CarComponent } from './components/car/car.component';
     ButtonModule,
     DataViewModule,
     PanelModule,
-    ToastModule
+    ToastModule,
+    TableModule,
+    ConfirmDialogModule,
+    MenubarModule,
+    DialogModule,
+    InputTextModule
    
   ],
   providers: [],

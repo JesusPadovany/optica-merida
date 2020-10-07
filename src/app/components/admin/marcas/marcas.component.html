@@ -1,0 +1,94 @@
+<p-table  #dt editMode="row" [value]="marcas" [responsive]="true" [columns]="cols" selectionMode="single" 
+    [paginator]="true" [rows]="10" [scrollable]="true" scrollHeight="500px" dataKey="idmarca" 
+    [rowsPerPageOptions]="[10,25,50]" >
+    
+    <!--Inicio [Búsqueda]  -->
+    <ng-template pTemplate="caption">
+        MARCAS
+        <p-menubar >
+            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>&nbsp;&nbsp;
+            <input pTooltip="Buscar" tooltipPosition="top" type="text" pInputText size="33.33"
+            placeholder="Buscar" style="width:auto" (input)="dt.filterGlobal($event.target.value, 'contains')">
+        </p-menubar>
+    </ng-template>
+
+    <!--Inicio [Body]  -->
+    <ng-template pTemplate="header">
+        <tr>
+            <th *ngFor="let col of cols"  class="text-center" [pSortableColumn]="col.field" [ngStyle]="{'width': col.width}">
+                {{ col.header }}
+                <p-sortIcon [field]="col.field"></p-sortIcon>
+            </th>
+            <th [ngStyle]="{'width':'10%'}" class="text-center">Acciones</th>
+        </tr>
+    </ng-template>   
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pEditableRow]>
+            <td [ngStyle]="{'width': '10%'}"  class="text-center">
+                {{ rowData.idmarca }}
+            </td>                    
+            <td [ngStyle]="{'width': '80%'}" class="text-center">
+                {{ rowData.nombre_marca }}
+            </td>
+            <td class="text-center" [ngStyle]="{'width': '10%'}">
+                <button title="Editar" pButton type="button" pSaveEditableRow icon="pi pi-pencil" class="ui-button-info"
+                (click)="edit(rowData)" style="margin-right: .1em"></button>
+                <button title="Eliminar" pButton type="button" pCancelEditableRow icon="pi pi-trash"
+                (click)="remove(rowData)" class="ui-button-delete"></button>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr> <td colspan="8" style="text-align:left">No se han encontrado registros.</td> </tr>
+    </ng-template>
+    <!--Nuevo Registro-->
+    <ng-template pTemplate="summary" let-rowData>
+        <div style="text-align:left">
+            <button style="width:100px" type="button" pButton icon="fa fa-plus"
+            label="Nuevo" (click)="showDialogToAdd()"></button>
+        </div>
+    </ng-template>
+</p-table>
+
+<!-- Editar/Registrar -->
+<p-dialog [(header)]="tituloDialogo" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" 
+[modal]="true" [style]="{width: '400px'}"  [closable]="false">
+    <form [formGroup]="myForm" (ngSubmit)="save()" novalidate>
+        <div class="ui-g ui-fluid" *ngIf="marca">
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="nombre_marca">Nombre*</label>
+                </div>
+                <div class="ui-g-8">
+                    
+                    <input class="form-control" formControlName="nombre_marca" pInputText type="text" id="nombre_marca" 
+                    [(ngModel)]="marca.nombre_marca" class="ng-dirty ng-invalid" required uppercase/>
+
+                    <div  *ngIf="myForm.get('nombre_marca').errors && myForm.get('nombre_marca').dirty">
+                        <p style="font-size: 10px;" *ngIf="myForm.get('nombre_marca').hasError('required')">* Campo requerido</p>
+                        <p style="font-size: 10px;" *ngIf="myForm.get('nombre_marca').hasError('minlength')">* Mínimo 1 caracteres</p>
+                        <p style="font-size: 10px;" *ngIf="myForm.get('nombre_marca').hasError('maxlength')">* Máximo 10 caracteres</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <hr><p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix" style="text-align: right;">
+                <button type="button submit" pButton icon="fa fa-check" label="Guardar" [disabled]="!myForm.valid"></button>
+                <button type="button" pButton icon="fa fa-times" (click)="close()" label="Cerrar" ></button>
+            </div>
+        </p-footer>
+    </form>
+</p-dialog> 
+
+<!-- Notificación -->
+<p-toast [style]="{marginTop: '70px'}" position="top-right" key="tc"></p-toast>
+
+<!-- Diálogo de Confirmación -->
+<p-confirmDialog #cd header="Confirmación" [baseZIndex]="10000" icon="pi pi-exclamation-triangle"  [closable]="false">
+    <p-footer>
+        <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+        <button type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+    </p-footer>
+</p-confirmDialog>

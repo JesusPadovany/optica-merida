@@ -1,6 +1,6 @@
 
 export interface Marca {
-    id_,
+    id_?,
     nombre_marca?,
     
     //Otro
