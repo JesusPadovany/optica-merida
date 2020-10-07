@@ -17,6 +17,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MenubarModule } from 'primeng/menubar';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
+import {TabViewModule} from 'primeng/tabview';
 
 // Directivas
 import { UppercaseDirective } from './directives/uppercase.directive';
@@ -41,6 +43,7 @@ import { CarComponent } from './components/car/car.component';
 import { MarcasComponent } from './components/admin/marcas/marcas.component';
 import { TipoLentesComponent } from './components/admin/tipo-lentes/tipo-lentes.component';
 import { InventarioComponent } from './components/admin/inventario/inventario.component';
+import { MenuComponent } from './components/admin/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +66,7 @@ import { InventarioComponent } from './components/admin/inventario/inventario.co
     MarcasComponent,
     TipoLentesComponent,
     InventarioComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,8 +84,9 @@ import { InventarioComponent } from './components/admin/inventario/inventario.co
     ConfirmDialogModule,
     MenubarModule,
     DialogModule,
-    InputTextModule
-   
+    InputTextModule,
+    DropdownModule,
+    TabViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]

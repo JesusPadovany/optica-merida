@@ -1,1 +1,164 @@
-<p>inventario works!</p>
+<p-table  #dt editMode="row" [value]="productos" [responsive]="true" [columns]="cols" selectionMode="single" 
+    [paginator]="true" [rows]="10" [scrollable]="true" scrollHeight="500px" dataKey="idinventario" 
+    [rowsPerPageOptions]="[10,25,50]" >
+    
+    <!--Inicio [Búsqueda]  -->
+    <ng-template pTemplate="caption">
+        <p-menubar >
+            <i class="fa fa-search" style="margin:4px 4px 0 0"></i>&nbsp;&nbsp;
+            <input pTooltip="Buscar" tooltipPosition="top" type="text" pInputText size="33.33"
+            placeholder="Buscar" style="width:auto" (input)="dt.filterGlobal($event.target.value, 'contains')">
+        </p-menubar>
+    </ng-template>
+
+    <!--Inicio [Body]  -->
+    <ng-template pTemplate="header">
+        <tr>
+            <th *ngFor="let col of cols"  class="text-center" [pSortableColumn]="col.field" [ngStyle]="{'width': col.width}">
+                {{ col.header }}
+                <p-sortIcon [field]="col.field"></p-sortIcon>
+            </th>
+            <th [ngStyle]="{'width':'10%'}" class="text-center">Acciones</th>
+        </tr>
+    </ng-template>   
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr [pEditableRow]>
+            <td [ngStyle]="{'width': '10%'}"  class="text-center">
+                {{ rowData.idinventario }}
+            </td>                    
+            <td [ngStyle]="{'width': '10%'}" class="text-center">
+                {{ rowData.codigo }}
+            </td>
+            <td [ngStyle]="{'width': '20%'}"  class="text-center">
+                {{ rowData.descripcion }}
+            </td>                    
+            <td [ngStyle]="{'width': '20%'}" class="text-center">
+                {{ rowData.tipo_lente }}
+            </td>
+            <td [ngStyle]="{'width': '20%'}"  class="text-center">
+                {{ rowData.marca }}
+            </td>                    
+            <td [ngStyle]="{'width': '10%'}" class="text-center">
+                {{ rowData.cantidad_total }}
+            </td>
+            <td [ngStyle]="{'width': '10%'}" class="text-center">
+                {{ rowData.precio }}
+            </td>
+            <td class="text-center" [ngStyle]="{'width': '10%'}">
+                <button title="Editar" pButton type="button" pSaveEditableRow icon="pi pi-pencil" class="ui-button-info"
+                (click)="edit(rowData)" style="margin-right: .1em"></button>
+                <button title="Eliminar" pButton type="button" pCancelEditableRow icon="pi pi-trash"
+                (click)="remove(rowData)" class="ui-button-delete"></button>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr> <td colspan="8" style="text-align:left">No se han encontrado registros.</td> </tr>
+    </ng-template>
+    <!--Nuevo Registro-->
+    <ng-template pTemplate="summary" let-rowData>
+        <div style="text-align:left">
+            <button style="width:100px" type="button" pButton icon="fa fa-plus"
+            label="Nuevo" (click)="showDialogToAdd()"></button>
+        </div>
+    </ng-template>
+</p-table>
+
+<!-- Editar/Registrar -->
+<p-dialog [(header)]="tituloDialogo" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" 
+    [modal]="true" [style]="{width: '400px'}"  [closable]="false">
+    <form [formGroup]="myForm" (ngSubmit)="save()" novalidate>
+        <div class="ui-g ui-fluid" *ngIf="producto">
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="descripcion">Nombre producto*</label>
+                </div>
+                <div class="ui-g-8">
+                    <input class="form-control" formControlName="descripcion" pInputText type="text" id="descripcion" [(ngModel)]="producto.descripcion" class="ng-dirty ng-invalid" uppercase/>
+                    <div  *ngIf="myForm.get('descripcion').errors && myForm.get('descripcion').dirty">
+                        <p style="font-size: 10px;" *ngIf="myForm.get('descripcion').hasError('maxlength')">* Máximo 20 caracteres</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="codigo">Código*</label>
+                </div>
+                <div class="ui-g-8">
+                    <input class="form-control" formControlName="codigo" pInputText type="text" id="codigo" [(ngModel)]="producto.codigo" class="ng-dirty ng-invalid" uppercase/>
+                    <div  *ngIf="myForm.get('codigo').errors && myForm.get('codigo').dirty">
+                        <p style="font-size: 10px;" *ngIf="myForm.get('codigo').hasError('maxlength')">* Máximo 20 caracteres</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12" >
+                <div class="ui-g-4">
+                    <label for="idtipo_lente">Tipo de lente*</label>
+                </div>
+                <div class="ui-g-8">
+                    <p-dropdown  formControlName="idtipo_lente"  optionLabel="tipo_lente" [options]="tipos" [(ngModel)]="selectedType" placeholder="Seleccionar" 
+                    name="idtipo_lente"  [filter]="true" [resetFilterOnHide]="true" required></p-dropdown>
+                    <div  *ngIf="myForm.get('idtipo_lente').errors && myForm.get('idtipo_lente').dirty">
+                        <p style="font-size: 10px;" *ngIf="myForm.get('idtipo_lente').hasError('required')">* Campo requerido</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12" >
+                <div class="ui-g-4">
+                    <label for="idmarca">Marca*</label>
+                </div>
+                <div class="ui-g-8">
+                    <p-dropdown  formControlName="idmarca"  optionLabel="nombre_marca" [options]="marcas" [(ngModel)]="selectedMarca" placeholder="Seleccionar" 
+                    name="idmarca"  [filter]="true" [resetFilterOnHide]="true" required></p-dropdown>
+                    <div  *ngIf="myForm.get('idmarca').errors && myForm.get('idmarca').dirty">
+                        <p style="font-size: 10px;" *ngIf="myForm.get('idmarca').hasError('required')">* Campo requerido</p>
+                    </div>
+                </div>
+            </div>
+           
+          
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="cantidad_total">Cantidad Stock*</label>
+                </div>
+                <div class="ui-g-8">
+                    <input  OnlyNumber="true" min="1" type="number" class="form-control" formControlName="cantidad_total" pInputText id="cantidad_total" [(ngModel)]="producto.cantidad_total" 
+                    class="ng-dirty ng-invalid" required/>
+                    <div  *ngIf="myForm.get('cantidad_total').errors && myForm.get('cantidad_total').dirty">
+                        <p style="font-size: 10px;" *ngIf="myForm.get('cantidad_total').hasError('required')">* Campo requerido</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-g-12">
+                <div class="ui-g-4">
+                    <label for="precio">Precio*</label>
+                </div>
+                <div class="ui-g-8">
+                    <input  OnlyNumber="true" min="1" type="number" class="form-control" formControlName="precio" pInputText id="precio" [(ngModel)]="producto.precio" 
+                    class="ng-dirty ng-invalid" required/>
+                    <div  *ngIf="myForm.get('precio').errors && myForm.get('precio').dirty">
+                        <p style="font-size: 10px;" *ngIf="myForm.get('precio').hasError('required')">* Campo requerido</p>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <hr><p-footer>
+            <div class="ui-dialog-buttonpane ui-helper-clearfix" style="text-align: right;">
+                <button type="button submit" pButton icon="fa fa-check" label="Guardar"  [disabled]="!myForm.valid" ></button>
+                <button type="button" pButton icon="fa fa-times" (click)="close()" label="Cerrar" ></button>
+            </div>
+        </p-footer>
+    </form>
+</p-dialog> 
+
+<!-- Notificación -->
+<p-toast [style]="{marginTop: '70px'}" position="top-right" key="tc"></p-toast>
+
+<!-- Diálogo de Confirmación -->
+<p-confirmDialog #cd header="Confirmación" [baseZIndex]="10000" icon="pi pi-exclamation-triangle"  [closable]="false">
+    <p-footer>
+        <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+        <button type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+    </p-footer>
+</p-confirmDialog>

@@ -14,6 +14,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { CarComponent } from './components/car/car.component';
 import { MarcasComponent } from './components/admin/marcas/marcas.component';
 import { TipoLentesComponent } from './components/admin/tipo-lentes/tipo-lentes.component';
+import { InventarioComponent } from './components/admin/inventario/inventario.component';
+import { MenuComponent } from './components/admin/menu/menu.component';
 
 
 const routes: Routes = [
@@ -60,12 +62,8 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'admin/marcas',
-    component: MarcasComponent,
-  },
-  {
-    path: 'admin/tipo-lentes',
-    component: TipoLentesComponent,
+    path: 'admin',
+    component: MenuComponent,
   },
 
 

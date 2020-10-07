@@ -1,15 +1,13 @@
 
 export interface Inventario {
-    id_,
-  
-    
+    id_?,
     tipo_lente?,
     marca?,
 
     //otro
     idinventario?,
     idtipo_lente?,
-    idmarca,
+    idmarca?,
     cantidad_total?,
     descripcion?,
     codigo?,
