@@ -6,10 +6,10 @@ export interface User {
     username?,
     password?,
     email?,
-    numero_tarjeta?,
+    //numero_tarjeta?,
     telefono?,
     direccion?
 
     //Otras
-    id_usuarios?,
+    //id_usuarios?,
 }

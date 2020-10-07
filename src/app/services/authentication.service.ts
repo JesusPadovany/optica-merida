@@ -14,16 +14,17 @@ export class AuthenticationService {
 
     login(usuario: string, contrasenia: string) : Observable<User> {
 
-        this.url = environment.apiUrl +  'login';
+        this.url = environment.apiUrl +  'login/';
         const md5Pass = String(Md5.hashStr(contrasenia));
 
-        return this.http.post<User>(this.url , { username: usuario, password: md5Pass })
+        return this.http.post<User>(this.url , { username: usuario, password: contrasenia })
     }
 
     
     register(user: User) : Observable<User> {
 
-        this.url = environment.apiUrl +  'create';
+        console.log(user);
+        this.url = environment.apiUrl +  'signup/';
 
         // const md5Pass = String(Md5.hashStr(password));
 
