@@ -32,7 +32,11 @@ export class CompraService {
     console.log(compra)
     console.log(url);
 
-    return this.http.post<any>(url, compra);
+    return this.http.post(url,compra).pipe(
+      tap(result => {
+      }),
+      // catchError(this.handleError('Error registrando tipo movimiento', []))
+    );
 
     /*return this.http.post(url, compra).pipe(
       tap(result => {

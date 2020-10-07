@@ -34,18 +34,19 @@ export class ProductDetailComponent implements OnInit {
 
   getProductById() {
     
-    this.product = {
-      id_: 1,
-      idtipo_lente: 2,
-      marca: 3,
-      cantidad_total: 10,
-      foto: "product-1.jpg",
-      descripcion: "Lentes A",
-      precio: "40",
-      codigo: "12361",
-      tipo:"De sol",
-      // marca:"Rayband"
-    }
+    this.inventarioService.getById(this.id).subscribe( (data) => this.product = data )
+    // this.product = {
+    //   id_: 1,
+    //   idtipo_lente: 2,
+    //   marca: 3,
+    //   cantidad_total: 10,
+    //   foto: "product-1.jpg",
+    //   descripcion: "Lentes A",
+    //   precio: "40",
+    //   codigo: "12361",
+    //   tipo:"De sol",
+    //   // marca:"Rayband"
+    // }
 
     //Petición promise
     //  this.inventarioService.getById(this.id)

@@ -59,8 +59,14 @@ export class CarComponent implements OnInit {
       this.compraService
         .create(el)
         .toPromise()
-        .then((res) => res)
-        .catch((err) => err);
+        .then((res) => {
+            this.showMessage("La compra se ha realizado exitosamente, su envio está en camino");
+            console.log(res);
+        })
+        .catch((err) => {
+          this.showError("Ha ocurrido un error");
+          console.log(err);
+        });
 
       // console.log(el);
     });
@@ -81,8 +87,8 @@ export class CarComponent implements OnInit {
     this.messageService.add({ key: "tc", severity: "error", summary: msg });
   }
 
-  private showSuccess(msg: string) {
+ private showMessage(msg: string) {
     this.messageService.clear();
-    this.messageService.add({ key: "tc", severity: "success", summary: msg });
+    this.messageService.add({ key: 'tc', severity: 'success', summary: msg });
   }
 }
