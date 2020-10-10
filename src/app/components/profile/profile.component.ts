@@ -20,19 +20,19 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
 
     /*Obtener datos del usuario del localstorage*/
-    // let currentUser = this.srvAuthService.getCurrentUser();
-    // this.user = JSON.parse(currentUser);
+    let currentUser = this.srvAuthService.getCurrentUser();
+    this.user = JSON.parse(currentUser).user;
 
-    this.user = {
-      id_:2,
-      nombres: "Maria",
-      apellidos: "Lopez",
-      username:"mlopez",
-      password:"1234",
-      email:"maria@gmail.com",
-      telefono:"0412-1234567",
-      direccion:"Los Mangos.."
-    }
+    // this.user = {
+    //   id_:2,
+    //   nombres: "Maria",
+    //   apellidos: "Lopez",
+    //   username:"mlopez",
+    //   password:"1234",
+    //   email:"maria@gmail.com",
+    //   telefono:"0412-1234567",
+    //   direccion:"Los Mangos.."
+    // }
 
   }
 

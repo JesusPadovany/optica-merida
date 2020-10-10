@@ -47,10 +47,12 @@ export class CarComponent implements OnInit {
   }
 
   comprar() {
+    const user = localStorage.getItem('currentUser');
+    const id = (JSON.parse(user))["user"]["id"];
     const carrito = JSON.parse(this.carritoService.getCarrito());
     const car = carrito.map((data: any) => ({
       inventario: data.id,
-      usuario: 1,
+      usuario: id,
       fecha_compra: new Date().toLocaleDateString(),
       cantidad: 1,
     }));

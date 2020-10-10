@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
 
-    this.user.password = String(Md5.hashStr(this.user.password));
+   // this.user.password = String(Md5.hashStr(this.user.password));
 
     this.authenticationService.register(this.user)
     .toPromise()
