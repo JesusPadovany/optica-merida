@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   // apiUrl: 'http://localhost/optica-back/public/api/',
-  apiUrl: 'http://localhost:8000/api/',
+  //apiUrl: 'http://localhost:8000/api/',
+  apiUrl: 'http://jesuspadovany.pythonanywhere.com/api/',
 };
 
 /*
