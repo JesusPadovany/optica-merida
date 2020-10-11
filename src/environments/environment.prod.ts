@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://jesuspadovany.pythonanywhere.com/api/',
+  apiUrl: 'https://cors-anywhere.herokuapp.com/http://jesuspadovany.pythonanywhere.com/api/',
 };
